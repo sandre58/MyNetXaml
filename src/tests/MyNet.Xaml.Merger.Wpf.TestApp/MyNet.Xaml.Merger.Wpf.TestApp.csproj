@@ -4,8 +4,8 @@
     <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
 
-    <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">True</XAMLCombineEnabled>
-    <XAMLColorSchemeGeneratorEnabled Condition="'$(XAMLColorSchemeGeneratorEnabled)' == ''">True</XAMLColorSchemeGeneratorEnabled>
+    <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">False</XAMLCombineEnabled>
+    <XAMLColorSchemeGeneratorEnabled Condition="'$(XAMLColorSchemeGeneratorEnabled)' == ''">False</XAMLColorSchemeGeneratorEnabled>
     <XAMLToolsPath>..\bin\$(Configuration)\</XAMLToolsPath>
   </PropertyGroup>
 
@@ -46,4 +46,18 @@
     <Page Remove="Themes/DuplicateNamespaces/*.xaml" />
     <None Include="Themes/DuplicateNamespaces/*.xaml" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Themes\GeneratorParameters.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Themes\ColorScheme.Template.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Themes\ColorScheme.Template.xaml" />
+    <EmbeddedResource Include="Themes\GeneratorParameters.json" />
+  </ItemGroup>
+
 </Project>

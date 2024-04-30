@@ -4,9 +4,9 @@
 -->
 <!--
 Source files:
-{SolutionDirectory}src\tests\MyNet.Xaml.Merger.Wpf.TestApp\Themes\WinUI\Colors1.xaml
-{SolutionDirectory}src\tests\MyNet.Xaml.Merger.Wpf.TestApp\Themes\WinUI\Colors2.xaml
-{SolutionDirectory}src\tests\MyNet.Xaml.Merger.Wpf.TestApp\Themes\WinUI\Common.xaml
+{SolutionDirectory}tests\MyNet.Xaml.Merger.Wpf.TestApp\Themes\WinUI\Colors1.xaml
+{SolutionDirectory}tests\MyNet.Xaml.Merger.Wpf.TestApp\Themes\WinUI\Colors2.xaml
+{SolutionDirectory}tests\MyNet.Xaml.Merger.Wpf.TestApp\Themes\WinUI\Common.xaml
 -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ResourceDictionary.ThemeDictionaries>

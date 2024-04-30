@@ -12,10 +12,11 @@ namespace MyNet.Xaml.Merger.Core.ResourceDump;
 
 public static class ResourceDumper
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Major Code Smell", "S3885:\"Assembly.Load\" should be used", Justification = "<Pending>")]
     public static void DumpResources(string assemblyFile, string outputPath)
     {
         assemblyFile = Path.GetFullPath(assemblyFile);
-        var assembly = Assembly.Load(assemblyFile);
+        var assembly = Assembly.LoadFile(assemblyFile);
 
         var resourceNames = assembly.GetManifestResourceNames();
 

@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/XAMLTools.WPFApp;component/Themes/Controls/Control2.xaml"/>
+        <ResourceDictionary Source="/MyNet.Xaml.Merger.Wpf.TestApp;component/Themes/Controls/Control2.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     <sys:String x:Key="string1">stringValue</sys:String>
 
