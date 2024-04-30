@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Simplifies the management and organization of resources in XAML-based applications by merging multiple resource dictionary files into a single, consolidated file.</Description>
+    <PackageTags>My;Xaml:MsBuild;Transform;Resource;Dictionary</PackageTags>
+    <Version>$(GitVersion)</Version>
+    <OutputType>Exe</OutputType>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>XamlMerger</AssemblyName>
+    <BaseOutputPath>$(SolutionDir)..\build\$(AssemblyName)</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.3" />
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
+  </ItemGroup>
+
+</Project>

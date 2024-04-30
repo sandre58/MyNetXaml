@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         TreatAsLocalProperty="MsBuildMajorVersion;IsBuildingInsideRider">
+  <PropertyGroup>
+    <XAMLToolsPath Condition="$(XAMLToolsPath) == ''">$(MSBuildThisFileDirectory)</XAMLToolsPath>
+    <XAMLToolsAssemblyDirectory>$(XAMLToolsPath)netstandard2.0</XAMLToolsAssemblyDirectory>
+    <XAMLToolsAssembly Condition="$(XAMLToolsAssembly) == ''">$(XAMLToolsAssemblyDirectory)\$(MSBuildThisFileName).dll</XAMLToolsAssembly>
+
+    <XAMLToolsExecutable>$(XAMLToolsPath)tools\net8.0\XAMLTools.exe</XAMLToolsExecutable>
+
+    <MsBuildMajorVersion>15</MsBuildMajorVersion>
+    <MsBuildMajorVersion Condition="'$(MSBuildVersion)' != ''">$([System.Version]::Parse($(MSBuildVersion)).Major)</MsBuildMajorVersion>
+
+    <IsBuildingInsideRider>False</IsBuildingInsideRider>
+    <IsBuildingInsideRider Condition="'$(RESHARPER_FUS_BUILD)' != ''">True</IsBuildingInsideRider>
+
+    <XAMLToolsIsMultiTargeting Condition="'$(XAMLToolsIsMultiTargeting)' == '' and '$(TargetFrameworks)' != '' and '$(IsBuildingInsideRider)' != 'true'">true</XAMLToolsIsMultiTargeting>
+  </PropertyGroup>
+
+  <PropertyGroup Label="XAMLCombine">
+    <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">true</XAMLCombineEnabled>
+
+    <RemoveXAMLCombineItemsFromPages Condition="'$(RemoveXAMLCombineItemsFromPages)' == '' And '$(Configuration)' == 'Debug'">false</RemoveXAMLCombineItemsFromPages>
+
+    <RemoveXAMLCombineItemsFromPages Condition="'$(RemoveXAMLCombineItemsFromPages)' == ''">true</RemoveXAMLCombineItemsFromPages>
+  </PropertyGroup>
+
+  <PropertyGroup Label="XAMLColorSchemeGenerator">
+    <XAMLColorSchemeGeneratorEnabled Condition="'$(XAMLColorSchemeGeneratorEnabled)' == ''">true</XAMLColorSchemeGeneratorEnabled>
+
+    <RemoveXAMLColorSchemeGeneratorItemsFromPages Condition="'$(RemoveXAMLColorSchemeGeneratorItemsFromPages)' == ''">true</RemoveXAMLColorSchemeGeneratorItemsFromPages>
+
+    <EmbedXAMLColorSchemeGeneratorInputs Condition="'$(EmbedXAMLColorSchemeGeneratorInputs)' == ''">true</EmbedXAMLColorSchemeGeneratorInputs>
+  </PropertyGroup>
+
+  <!-- multi targeting -->
+  <PropertyGroup Label="TargetOrder"
+                 Condition="'$(XAMLToolsIsMultiTargeting)' == 'true'">
+    <XAMLCombineTargetsBefore Condition="'$(XAMLCombineTargetsBefore)' == ''">
+      DispatchToInnerBuilds;
+    </XAMLCombineTargetsBefore>
+
+    <XAMLColorSchemeGeneratorTargetsBefore Condition="'$(XAMLColorSchemeGeneratorTargetsBefore)' == ''">
+      DispatchToInnerBuilds;
+    </XAMLColorSchemeGeneratorTargetsBefore>
+  </PropertyGroup>
+
+  <!-- Not multi targeting -->
+  <PropertyGroup Label="TargetOrder"
+                 Condition="'$(XAMLToolsIsMultiTargeting)' != 'true'">
+    <XAMLCombineTargetsBefore Condition="'$(XAMLCombineTargetsBefore)' == ''">
+      BeforeCompile;
+      CoreCompile;
+    </XAMLCombineTargetsBefore>
+
+    <XAMLColorSchemeGeneratorTargetsBefore Condition="'$(XAMLColorSchemeGeneratorTargetsBefore)' == ''">
+      BeforeCompile;
+      CoreCompile;
+    </XAMLColorSchemeGeneratorTargetsBefore>
+
+    <!-- Ensure XAMLTools run prior to XAML's Markup Compiler in order to have the generated files available. -->
+    <MarkupCompilePass1DependsOn>XAMLColorSchemeGenerator;XAMLCombine;$(MarkupCompilePass1DependsOn)</MarkupCompilePass1DependsOn>
+  </PropertyGroup>
+</Project>

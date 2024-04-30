@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
+    <Description>This library provides seamless conversion capabilities between HTML and XAML markup languages, enabling developers to effortlessly translate web content into native XAML format for integration within .NET applications, and vice versa.</Description>
+    <PackageTags>MyNet;XAML;HTML;Converter</PackageTags>
+    <UseWPF>true</UseWPF>
+    <VersionPrefix>1.0.1</VersionPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="8.0.4" />
+  </ItemGroup>
+
+</Project>

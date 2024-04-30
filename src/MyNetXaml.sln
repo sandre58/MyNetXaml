@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_config", "_config", "{246A4888-9B8A-4EED-88A9-1162D7C9AF7D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		MyNetXaml.ruleset = MyNetXaml.ruleset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{117DC9D7-9E2D-4D23-955F-E7892DC949A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_doc", "_doc", "{EAAD6BC8-1CE6-4A8A-AC34-212D2E3C8F33}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\CODE_OF_CONDUCT.md = ..\CODE_OF_CONDUCT.md
+		..\LICENSE = ..\LICENSE
+		..\images\logo.png = ..\images\logo.png
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_github", "_github", "{76710178-4DE5-4250-BD26-8CD72C42EF5A}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
+		..\.github\workflows\create_extension_release.yml = ..\.github\workflows\create_extension_release.yml
+		..\.github\workflows\create_release.yml = ..\.github\workflows\create_release.yml
+		..\.github\GitVersion.yml = ..\.github\GitVersion.yml
+		..\.github\workflows\git_version.yml = ..\.github\workflows\git_version.yml
+		..\.github\workflows\publish_packages.yml = ..\.github\workflows\publish_packages.yml
+		..\.github\workflows\publish_release.yml = ..\.github\workflows\publish_release.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Html", "MyNet.Xaml.Html\MyNet.Xaml.Html.csproj", "{9479C3BB-792C-4D57-8F18-EFDE6DDA8036}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Core", "MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj", "{02E63BD5-C28F-492E-933F-EBF96EB7B281}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger", "MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj", "{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.MSBuild", "MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj", "{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Wpf.TestApp", "tests\MyNet.Xaml.Merger.Wpf.TestApp\MyNet.Xaml.Merger.Wpf.TestApp.csproj", "{14FE42A4-539D-47F0-AD70-8DAC57C76490}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.UnitTests", "tests\MyNet.Xaml.Merger.UnitTests\MyNet.Xaml.Merger.UnitTests.csproj", "{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9479C3BB-792C-4D57-8F18-EFDE6DDA8036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9479C3BB-792C-4D57-8F18-EFDE6DDA8036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9479C3BB-792C-4D57-8F18-EFDE6DDA8036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9479C3BB-792C-4D57-8F18-EFDE6DDA8036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E63BD5-C28F-492E-933F-EBF96EB7B281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E63BD5-C28F-492E-933F-EBF96EB7B281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E63BD5-C28F-492E-933F-EBF96EB7B281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E63BD5-C28F-492E-933F-EBF96EB7B281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14FE42A4-539D-47F0-AD70-8DAC57C76490} = {117DC9D7-9E2D-4D23-955F-E7892DC949A7}
+		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89} = {117DC9D7-9E2D-4D23-955F-E7892DC949A7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {854C6F4F-4D88-4024-BEDC-34E4FCE36013}
+	EndGlobalSection
+EndGlobal
