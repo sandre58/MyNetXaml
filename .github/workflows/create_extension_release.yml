@@ -63,7 +63,7 @@ jobs:
       build-args: ${{ needs.compute_parameters.outputs.buildArgs }}
       name: Build
       solution-path: .\src\${{ needs.compute_parameters.outputs.package_name }}\${{ needs.compute_parameters.outputs.package_name }}.csproj
-
+  
   # Create release
   release:
     runs-on: ubuntu-latest

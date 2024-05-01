@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using CliWrap;
 using CliWrap.Buffered;
@@ -13,9 +14,7 @@ namespace MyNet.Xaml.Merger.UnitTests;
 public class MSBuildCompileTests
 {
     [Test]
-    [TestCase("Debug")]
-    [TestCase("Release")]
-    public async Task CheckCompileOutputAfterGitCleanAsync(string configuration)
+    public async Task CheckCompileOutputAfterGitCleanAsync()
     {
         var currentAssemblyDir = Path.GetDirectoryName(GetType().Assembly.Location)!;
         var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../MyNet.Xaml.Merger.Wpf.TestApp"));
@@ -25,7 +24,9 @@ public class MSBuildCompileTests
         const string assemblyName = "MyNet.Xaml.Merger.Wpf.TestApp.dll";
         const string framework = "net8.0-windows";
 
-        var binPath = Path.Combine(wpfAppDirectory, "bin", configuration, framework);
+        var assemblyConfigurationAttribute = GetType().Assembly.GetCustomAttribute<AssemblyConfigurationAttribute>();
+        var configuration = assemblyConfigurationAttribute?.Configuration;
+        var binPath = Path.Combine(wpfAppDirectory, "bin", configuration ?? string.Empty, framework);
 
         var result = await Cli.Wrap("git")
                               .WithArguments($"clean -fxd")
@@ -36,7 +37,7 @@ public class MSBuildCompileTests
         Assert.That(result.ExitCode, Is.EqualTo(0), result.StandardError);
 
         result = await Cli.Wrap("dotnet")
-                       .WithArguments($"build -c {configuration} /p:XAMLColorSchemeGeneratorEnabled=true /p:XAMLCombineEnabled=true /nr:false --no-dependencies -v:diag")
+                       .WithArguments($"build /p:XAMLColorSchemeGeneratorEnabled=true /p:XAMLCombineEnabled=true /nr:false --no-dependencies -v:diag")
                        .WithWorkingDirectory(wpfAppDirectory)
                        .WithValidation(CommandResultValidation.None)
                        .ExecuteBufferedAsync();
