@@ -8,7 +8,6 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using MyNet.Xaml.Merger.Core.Helpers;
 using MyNet.Xaml.Merger.Core.XAMLCombine;
-using MyNet.Xaml.Merger.MSBuild;
 
 namespace MyNet.Xaml.Merger.MSBuild
 {
