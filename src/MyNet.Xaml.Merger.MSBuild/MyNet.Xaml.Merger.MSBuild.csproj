@@ -5,7 +5,8 @@
     <PackageTags>My;Xaml;MsBuild;Transform;Resource;Dictionary</PackageTags>
     <Version>$(GitVersion)</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    </PropertyGroup>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+  </PropertyGroup>
 
   <ItemGroup>
     <None Include="buildTarget/*.*" Pack="true" PackagePath="build" />
@@ -26,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference PrivateAssets="All" Include="..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
+    <ProjectReference Include="..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,7 @@
     <XAMLToolsAssemblyDirectory>$(XAMLToolsPath)netstandard2.0</XAMLToolsAssemblyDirectory>
     <XAMLToolsAssembly Condition="$(XAMLToolsAssembly) == ''">$(XAMLToolsAssemblyDirectory)\$(MSBuildThisFileName).dll</XAMLToolsAssembly>
 
-    <XAMLToolsExecutable>$(XAMLToolsPath)tools\net8.0\XAMLTools.exe</XAMLToolsExecutable>
+    <XAMLToolsExecutable>$(XAMLToolsPath)tools\net8.0\XamlMerger.exe</XAMLToolsExecutable>
 
     <MsBuildMajorVersion>15</MsBuildMajorVersion>
     <MsBuildMajorVersion Condition="'$(MSBuildVersion)' != ''">$([System.Version]::Parse($(MSBuildVersion)).Major)</MsBuildMajorVersion>
