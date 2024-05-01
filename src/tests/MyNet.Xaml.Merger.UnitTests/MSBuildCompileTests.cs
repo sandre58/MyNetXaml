@@ -68,11 +68,9 @@ public class MSBuildCompileTests
 
         var xamlResourceNames = File.ReadAllLines(Path.Combine(outputPath, "XAMLResourceNames"));
 
-        if (configuration == "Debug")
-        {
-            Assert.That(xamlResourceNames, Is.EquivalentTo(
-                            new[]
-                            {
+        Assert.That(xamlResourceNames, Is.EquivalentTo(
+                        new[]
+                        {
                                     "themes/colorschemes/light.yellow.colorful.baml",
                                     "themes/colorschemes/dark.yellow.colorful.baml",
                                     "themes/colorschemes/light.yellow.baml",
@@ -90,27 +88,6 @@ public class MSBuildCompileTests
                                     "themes/controls/control2.baml",
                                     "themes/controls/control1.baml",
                                     "themes/controls/zconverters.baml",
-                            }));
-        }
-        else
-        {
-            Assert.That(xamlResourceNames, Is.EquivalentTo(
-                            new[]
-                            {
-                                    "themes/colorschemes/light.yellow.colorful.baml",
-                                    "themes/colorschemes/dark.yellow.colorful.baml",
-                                    "themes/colorschemes/light.yellow.baml",
-                                    "themes/colorschemes/dark.blue.colorful.baml",
-                                    "themes/colorschemes/dark.green.colorful.highcontrast.baml",
-                                    "themes/colorschemes/dark.yellow.baml",
-                                    "themes/generic.baml",
-                                    "themes/colorschemes/light.blue.baml",
-                                    "themes/colorschemes/light.blue.colorful.baml",
-                                    "mainwindow.baml",
-                                    "themes/colorschemes/dark.green.highcontrast.baml",
-                                    "themes/colorschemes/dark.blue.baml",
-                                    "themes/colorschemes/light.green.highcontrast.baml"
-                            }));
-        }
+                        }));
     }
 }

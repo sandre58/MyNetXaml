@@ -49,15 +49,12 @@
 
   <ItemGroup>
     <None Remove="Themes\GeneratorParameters.json" />
+    <EmbeddedResource Include="Themes\GeneratorParameters.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="Themes\ColorScheme.Template.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="Themes\ColorScheme.Template.xaml" />
-    <EmbeddedResource Include="Themes\GeneratorParameters.json" />
   </ItemGroup>
 
 </Project>

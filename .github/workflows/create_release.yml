@@ -46,19 +46,38 @@ jobs:
           disableNormalization: true
 
   # Build and test
-  build:
+  build-debug:
     uses: avantipoint/workflow-templates/.github/workflows/dotnet-build.yml@master # https://github.com/AvantiPoint/workflow-templates/blob/master/.github/workflows/dotnet-build.yml
     needs: [ gitversion ]
     with:
-      dotnet-test-logger: GitHubActions --no-build --no-restore
+      name: Build [Debug]
+      build-configuration: Debug
+      artifact-name: ''
+      run-tests: false
       build-args: '/p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}'
-      name: Build
       solution-path: .\src\MyNetXaml.sln
+      nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}
+    secrets:
+      nugetUserName: ${{ vars.PRIVATE_NUGET_API_USERNAME }}
+      nugetToken: ${{ secrets.PRIVATE_NUGET_API_KEY }}
+
+  build-release:
+    uses: avantipoint/workflow-templates/.github/workflows/dotnet-build.yml@master # https://github.com/AvantiPoint/workflow-templates/blob/master/.github/workflows/dotnet-build.yml
+    needs: [ gitversion, build-debug ]
+    with:
+      name: Build [Release]
+      build-args: '/p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}'
+      dotnet-test-logger: GitHubActions --no-build --no-restore
+      solution-path: .\src\MyNetXaml.sln
+      nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}
+    secrets:
+      nugetUserName: ${{ vars.PRIVATE_NUGET_API_USERNAME }}
+      nugetToken: ${{ secrets.PRIVATE_NUGET_API_KEY }}
       
 # Create release
   release:
     runs-on: ubuntu-latest
-    needs: [ gitversion, build ]
+    needs: [ gitversion, build-release ]
     env:
       DOTNET_SYSTEM_CONSOLE_ALLOW_ANSI_COLOR_REDIRECTION: true
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
