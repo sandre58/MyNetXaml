@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
     <ProjectReference Include="..\..\MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj" />
     <ProjectReference Include="..\..\MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj" />
   </ItemGroup>
