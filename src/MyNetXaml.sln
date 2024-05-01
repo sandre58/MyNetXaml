@@ -39,13 +39,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Console", "MyNet.Xaml.Merger.Console\MyNet.Xaml.Merger.Console.csproj", "{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.MSBuild", "MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj", "{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575} = {5E91C3AF-C2A1-414C-AE21-F15AD87B1575}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Wpf.TestApp", "tests\MyNet.Xaml.Merger.Wpf.TestApp\MyNet.Xaml.Merger.Wpf.TestApp.csproj", "{14FE42A4-539D-47F0-AD70-8DAC57C76490}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.UnitTests", "tests\MyNet.Xaml.Merger.UnitTests\MyNet.Xaml.Merger.UnitTests.csproj", "{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,17 +68,12 @@ Global
 		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{14FE42A4-539D-47F0-AD70-8DAC57C76490} = {117DC9D7-9E2D-4D23-955F-E7892DC949A7}
-		{78C3927C-CD01-4ADB-9FCA-6C39D99D0B89} = {117DC9D7-9E2D-4D23-955F-E7892DC949A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {854C6F4F-4D88-4024-BEDC-34E4FCE36013}
