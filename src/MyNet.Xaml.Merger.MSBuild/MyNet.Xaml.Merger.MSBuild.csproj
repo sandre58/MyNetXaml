@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj" />
+    <ProjectReference Include="..\MyNet.Xaml.Merger.Console\MyNet.Xaml.Merger.Console.csproj" />
   </ItemGroup>
 
 </Project>

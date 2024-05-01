@@ -38,12 +38,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger", "MyNet.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Console", "MyNet.Xaml.Merger.Console\MyNet.Xaml.Merger.Console.csproj", "{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.MSBuild", "MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj", "{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575} = {5E91C3AF-C2A1-414C-AE21-F15AD87B1575}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Wpf.TestApp", "tests\MyNet.Xaml.Merger.Wpf.TestApp\MyNet.Xaml.Merger.Wpf.TestApp.csproj", "{14FE42A4-539D-47F0-AD70-8DAC57C76490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.MSBuild", "MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj", "{80D8C01D-8408-4C65-A967-70CE5A572D81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,20 +58,13 @@ Global
 		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14FE42A4-539D-47F0-AD70-8DAC57C76490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D8C01D-8408-4C65-A967-70CE5A572D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D8C01D-8408-4C65-A967-70CE5A572D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D8C01D-8408-4C65-A967-70CE5A572D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D8C01D-8408-4C65-A967-70CE5A572D81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{14FE42A4-539D-47F0-AD70-8DAC57C76490} = {117DC9D7-9E2D-4D23-955F-E7892DC949A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {854C6F4F-4D88-4024-BEDC-34E4FCE36013}
