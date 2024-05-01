@@ -9,8 +9,8 @@
     <XAMLToolsPath>..\bin\$(Configuration)\</XAMLToolsPath>
   </PropertyGroup>
 
-  <Import Project="..\..\MyNet.Xaml.Merger.MSBuild\buildTarget\MyNet.Xaml.Merger.MSBuild.props" />
-  <Import Project="..\..\MyNet.Xaml.Merger.MSBuild\buildTarget\MyNet.Xaml.Merger.MSBuild.targets" />
+  <Import Project="..\..\MyNet.Xaml.Merger.MSBuild\build\MyNet.Xaml.Merger.MSBuild.props" />
+  <Import Project="..\..\MyNet.Xaml.Merger.MSBuild\build\MyNet.Xaml.Merger.MSBuild.targets" />
 
   <ItemGroup>
     <ProjectReference Include="..\..\MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj" />
