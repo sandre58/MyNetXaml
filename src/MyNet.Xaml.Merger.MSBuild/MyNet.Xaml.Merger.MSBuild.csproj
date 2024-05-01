@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <Description>Empowers developers to streamline the integration of resource dictionaries in XAML-based applications by consolidating multiple resource dictionary files into a single, cohesive file during the build process using MSBuild.</Description>
-    <PackageTags>My;Xaml:MsBuild;Transform;Resource;Dictionary</PackageTags>
+    <PackageTags>My;Xaml;MsBuild;Transform;Resource;Dictionary</PackageTags>
     <Version>$(GitVersion)</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
+    <ProjectReference PrivateAssets="all" Include="..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
   </ItemGroup>
 
 </Project>

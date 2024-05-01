@@ -1,21 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Description>Various tools for easing the development of XAML related applications.
-
-As i only use WPF myself everything is focused on WPF, but things should work for other XAML dialects (at least in theory).
-
-- XAMLCombine
-
-Combines multiple XAML files to one large file.
-This is useful when you want to provide one `Generic.xaml` instead of multiple small XAML files.
-Using one large XAML file not only makes it easier to consume, but can also drastically improving loading performance.
-
-- XAMLColorSchemeGenerator
-
-Generates color scheme XAML files while replacing certain parts of a template file.</Description>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="8.0.3" />
   </ItemGroup>

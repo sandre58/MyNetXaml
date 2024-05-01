@@ -31,19 +31,22 @@
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)MyNetXaml.ruleset</CodeAnalysisRuleSet>
     <NoWarn>$(NoWarn);SYSLIB0013;SYSLIB1054;CS1591;CS1574</NoWarn>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-    <IsTestProject>$(MSBuildProjectName.Contains('UnitTests'))</IsTestProject>
+    <IsTestProject>$(MSBuildProjectName.Contains('.UnitTests'))</IsTestProject>
+    <IsTestApp>$(MSBuildProjectName.Contains('.TestApp'))</IsTestApp>
+    <IsCoreProject>$(MSBuildProjectName.Contains('.Core'))</IsCoreProject>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>True</IncludeSource>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <DeterministicSourcePaths Condition="'$(EnableSourceLink)' == ''">false</DeterministicSourcePaths>
   </PropertyGroup>
 
   <!-- Package -->
   <PropertyGroup>
-    <GeneratePackageOnBuild Condition=" '$(IsTestProject)' != 'true' And '$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
+    <IsPackable Condition="'$(IsCoreProject)' != 'true' And '$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true'">true</IsPackable>
+    <GeneratePackageOnBuild Condition="'$(IsCoreProject)' != 'true' And '$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true' And '$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <RepositoryUrl>https://github.com/sandre58/MyNetXaml</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryBranch>main</RepositoryBranch>
@@ -58,17 +61,13 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb;.xml</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
-
-  <PropertyGroup Condition="$(IsTestProject)">
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
-  <ItemGroup Condition="'$(IsTestProject)' != 'true'">
+  
+  <ItemGroup Condition="'$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" includeAssets="build;compile"/>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(IsTestProject)' != 'true'">
+  <ItemGroup Condition="'$(IsCoreProject)' != 'true' And '$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true'">
     <None Include="$(MSBuildThisFileDirectory)..\LICENSE" Pack="true" PackagePath="">
       <Link>_package/LICENSE</Link>
     </None>
