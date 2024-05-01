@@ -40,6 +40,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Console",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.MSBuild", "MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj", "{80D8C01D-8408-4C65-A967-70CE5A572D81}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Wpf.TestApp", "tests\MyNet.Xaml.Merger.Wpf.TestApp\MyNet.Xaml.Merger.Wpf.TestApp.csproj", "{2EBA30D6-FA5F-4F6A-BF3B-8E8ED37FF0D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.UnitTests", "tests\MyNet.Xaml.Merger.UnitTests\MyNet.Xaml.Merger.UnitTests.csproj", "{CD76C9D0-A318-47E5-BD09-80E90FABAFC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,9 +66,21 @@ Global
 		{80D8C01D-8408-4C65-A967-70CE5A572D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D8C01D-8408-4C65-A967-70CE5A572D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D8C01D-8408-4C65-A967-70CE5A572D81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EBA30D6-FA5F-4F6A-BF3B-8E8ED37FF0D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EBA30D6-FA5F-4F6A-BF3B-8E8ED37FF0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EBA30D6-FA5F-4F6A-BF3B-8E8ED37FF0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EBA30D6-FA5F-4F6A-BF3B-8E8ED37FF0D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD76C9D0-A318-47E5-BD09-80E90FABAFC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD76C9D0-A318-47E5-BD09-80E90FABAFC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD76C9D0-A318-47E5-BD09-80E90FABAFC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD76C9D0-A318-47E5-BD09-80E90FABAFC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2EBA30D6-FA5F-4F6A-BF3B-8E8ED37FF0D9} = {117DC9D7-9E2D-4D23-955F-E7892DC949A7}
+		{CD76C9D0-A318-47E5-BD09-80E90FABAFC6} = {117DC9D7-9E2D-4D23-955F-E7892DC949A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {854C6F4F-4D88-4024-BEDC-34E4FCE36013}

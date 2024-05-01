@@ -4,7 +4,7 @@
     <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
 
-    <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">False</XAMLCombineEnabled>
+    <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">True</XAMLCombineEnabled>
     <XAMLColorSchemeGeneratorEnabled Condition="'$(XAMLColorSchemeGeneratorEnabled)' == ''">False</XAMLColorSchemeGeneratorEnabled>
     <XAMLToolsPath>..\bin\$(Configuration)\</XAMLToolsPath>
   </PropertyGroup>
