@@ -4,8 +4,8 @@
 using System.Collections.Generic;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
-using MyNet.Xaml.Merger.Core.Helpers;
-using MyNet.Xaml.Merger.Core.XAMLColorSchemeGenerator;
+using MyNet.Xaml.Merger.Helpers;
+using MyNet.Xaml.Merger.XAMLColorSchemeGenerator;
 
 namespace MyNet.Xaml.Merger.MSBuild
 {

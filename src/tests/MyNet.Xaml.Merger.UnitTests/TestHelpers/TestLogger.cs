@@ -2,7 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Generic;
-using MyNet.Xaml.Merger.Core;
+using MyNet.Xaml.Merger;
 
 namespace MyNet.Xaml.Merger.UnitTests.TestHelpers;
 

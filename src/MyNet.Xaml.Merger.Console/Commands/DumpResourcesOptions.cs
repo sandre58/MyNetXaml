@@ -4,9 +4,8 @@
 using System.Threading.Tasks;
 using CommandLine;
 using JetBrains.Annotations;
-using MyNet.Xaml.Merger.Core.ResourceDump;
 
-namespace MyNet.Xaml.Merger.Commands;
+namespace MyNet.Xaml.Merger.Console.Commands;
 
 [PublicAPI]
 [Verb("dump-resources", HelpText = "Generate XAML color scheme files.")]

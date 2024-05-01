@@ -3,7 +3,7 @@
 
 using System.Xml.Linq;
 
-namespace MyNet.Xaml.Merger.Core.XAMLCombine
+namespace MyNet.Xaml.Merger.XAMLCombine
 {
     /// <summary>
     /// Represents a XAML resource.

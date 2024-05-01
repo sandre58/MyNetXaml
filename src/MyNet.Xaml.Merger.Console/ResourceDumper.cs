@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace MyNet.Xaml.Merger.Core.ResourceDump;
+namespace MyNet.Xaml.Merger.Console;
 
 public static class ResourceDumper
 {

@@ -34,9 +34,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_github", "_github", "{7671
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Html", "MyNet.Xaml.Html\MyNet.Xaml.Html.csproj", "{9479C3BB-792C-4D57-8F18-EFDE6DDA8036}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Core", "MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj", "{02E63BD5-C28F-492E-933F-EBF96EB7B281}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger", "MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj", "{02E63BD5-C28F-492E-933F-EBF96EB7B281}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger", "MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj", "{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Console", "MyNet.Xaml.Merger.Console\MyNet.Xaml.Merger.Console.csproj", "{5E91C3AF-C2A1-414C-AE21-F15AD87B1575}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.MSBuild", "MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj", "{AE1EBE15-FBBA-468E-802A-F0DC5AEAAD05}"
 	ProjectSection(ProjectDependencies) = postProject

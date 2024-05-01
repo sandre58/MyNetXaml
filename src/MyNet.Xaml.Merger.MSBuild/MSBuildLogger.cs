@@ -2,7 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using Microsoft.Build.Framework;
-using ILogger = MyNet.Xaml.Merger.Core.ILogger;
+using ILogger = MyNet.Xaml.Merger.ILogger;
 
 namespace MyNet.Xaml.Merger.MSBuild;
 

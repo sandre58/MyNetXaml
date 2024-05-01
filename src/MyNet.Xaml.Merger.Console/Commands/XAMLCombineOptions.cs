@@ -5,10 +5,10 @@ using System;
 using System.Threading.Tasks;
 using CommandLine;
 using JetBrains.Annotations;
-using MyNet.Xaml.Merger.Core.Helpers;
-using MyNet.Xaml.Merger.Core.XAMLCombine;
+using MyNet.Xaml.Merger.Helpers;
+using MyNet.Xaml.Merger.XAMLCombine;
 
-namespace MyNet.Xaml.Merger.Commands;
+namespace MyNet.Xaml.Merger.Console.Commands;
 
 [PublicAPI]
 [Verb("combine", HelpText = "Combine multiple XAML files to one target file.")]

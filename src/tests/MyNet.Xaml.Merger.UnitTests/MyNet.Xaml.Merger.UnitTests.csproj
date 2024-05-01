@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWpf>True</UseWpf>
   </PropertyGroup>
 
@@ -25,8 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
-    <ProjectReference Include="..\..\MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj" />
+    <ProjectReference Include="..\..\MyNet.Xaml.Merger.Console\MyNet.Xaml.Merger.Console.csproj" />
     <ProjectReference Include="..\..\MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj" />
   </ItemGroup>
 </Project>

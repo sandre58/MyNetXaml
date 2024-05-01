@@ -4,7 +4,7 @@
 using CommandLine;
 using JetBrains.Annotations;
 
-namespace MyNet.Xaml.Merger.Commands;
+namespace MyNet.Xaml.Merger.Console.Commands;
 
 [PublicAPI]
 public class BaseOptions

@@ -9,9 +9,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-using MyNet.Xaml.Merger.Core.Helpers;
+using MyNet.Xaml.Merger.Helpers;
 
-namespace MyNet.Xaml.Merger.Core.XAMLCombine
+namespace MyNet.Xaml.Merger.XAMLCombine
 {
     public class XAMLCombiner : IXamlCombinerOptions
     {

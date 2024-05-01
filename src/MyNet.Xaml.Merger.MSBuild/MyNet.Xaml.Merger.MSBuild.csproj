@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
     <Description>Empowers developers to streamline the integration of resource dictionaries in XAML-based applications by consolidating multiple resource dictionary files into a single, cohesive file during the build process using MSBuild.</Description>
     <PackageTags>My;Xaml;MsBuild;Transform;Resource;Dictionary</PackageTags>
     <Version>$(GitVersion)</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="buildTarget/*.*" Pack="true" PackagePath="build" />
     <None Include="buildMultiTargets/*.*" Pack="true" PackagePath="buildMultiTargets" />
+
+    <None Include="..\..\build\XamlMerger\$(Configuration)\net472\*.dll" Pack="true" PackagePath="tools/net472" Visible="False" />
+    <None Include="..\..\build\XamlMerger\$(Configuration)\net472\XamlMerger.exe" Pack="true" PackagePath="tools/net472" Visible="False" />
+    <None Include="..\..\build\XamlMerger\$(Configuration)\net472\XamlMerger.exe.config" Pack="true" PackagePath="tools/net472" Visible="False" />
+
+    <None Include="$(OutputPath)\net472\*.dll" Pack="true" PackagePath="build/net472" Visible="False" />
 
     <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\*.dll" Pack="true" PackagePath="tools/net8.0" Visible="False" />
     <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\XamlMerger.dll.config" Pack="true" PackagePath="tools/net8.0" Visible="False" />
@@ -18,7 +24,7 @@
     <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\XamlMerger.exe" Pack="true" PackagePath="tools/net8.0" Visible="False" />
     <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\XamlMerger.runtimeconfig.json" Pack="true" PackagePath="tools/net8.0" Visible="False" />
 
-    <None Include="bin\$(Configuration)\netstandard2.0\*.dll" Pack="true" PackagePath="build/netstandard2.0" Visible="False" />
+    <None Include="$(OutputPath)\netstandard2.0\*.dll" Pack="true" PackagePath="build/netstandard2.0" Visible="False" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
+    <ProjectReference Include="..\MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj" />
   </ItemGroup>
 
 </Project>

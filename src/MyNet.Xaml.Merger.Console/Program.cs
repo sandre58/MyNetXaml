@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using CommandLine;
-using MyNet.Xaml.Merger.Commands;
+using MyNet.Xaml.Merger.Console.Commands;
 
-namespace MyNet.Xaml.Merger;
+namespace MyNet.Xaml.Merger.Console;
 
 public static class Program
 {
@@ -30,18 +30,18 @@ public static class Program
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            System.Console.WriteLine(e);
 
             if (Debugger.IsAttached)
             {
-                Console.ReadLine();
+                System.Console.ReadLine();
             }
 
             return 1;
         }
         finally
         {
-            Console.WriteLine($"Execution time: {stopwatch.Elapsed}");
+            System.Console.WriteLine($"Execution time: {stopwatch.Elapsed}");
         }
     }
 
@@ -49,7 +49,7 @@ public static class Program
     {
         foreach (var error in errors)
         {
-            Console.Error.WriteLine(error.ToString());
+            System.Console.Error.WriteLine(error.ToString());
         }
 
         return Task.FromResult(1);

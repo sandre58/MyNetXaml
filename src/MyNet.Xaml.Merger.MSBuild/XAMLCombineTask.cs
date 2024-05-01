@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
-using MyNet.Xaml.Merger.Core.Helpers;
-using MyNet.Xaml.Merger.Core.XAMLCombine;
+using MyNet.Xaml.Merger.Helpers;
+using MyNet.Xaml.Merger.XAMLCombine;
 
 namespace MyNet.Xaml.Merger.MSBuild
 {

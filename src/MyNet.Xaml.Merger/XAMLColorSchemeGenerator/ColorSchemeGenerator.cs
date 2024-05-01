@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using MyNet.Xaml.Merger.Core.Helpers;
+using MyNet.Xaml.Merger.Helpers;
 
-namespace MyNet.Xaml.Merger.Core.XAMLColorSchemeGenerator
+namespace MyNet.Xaml.Merger.XAMLColorSchemeGenerator
 {
     public class ColorSchemeGenerator
     {

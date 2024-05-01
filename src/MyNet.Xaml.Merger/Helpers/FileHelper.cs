@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 
-namespace MyNet.Xaml.Merger.Core.Helpers;
+namespace MyNet.Xaml.Merger.Helpers;
 
 public static class FileHelper
 {

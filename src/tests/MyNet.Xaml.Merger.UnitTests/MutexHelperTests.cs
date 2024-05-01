@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using MyNet.Xaml.Merger.Core.Helpers;
+using MyNet.Xaml.Merger.Helpers;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 

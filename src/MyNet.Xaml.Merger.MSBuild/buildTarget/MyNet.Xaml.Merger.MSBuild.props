@@ -3,10 +3,13 @@
          TreatAsLocalProperty="MsBuildMajorVersion;IsBuildingInsideRider">
   <PropertyGroup>
     <XAMLToolsPath Condition="$(XAMLToolsPath) == ''">$(MSBuildThisFileDirectory)</XAMLToolsPath>
-    <XAMLToolsAssemblyDirectory>$(XAMLToolsPath)netstandard2.0</XAMLToolsAssemblyDirectory>
+    <XAMLToolsAssemblyDirectory Condition="$(MSBuildRuntimeType) == 'Core'">$(XAMLToolsPath)netstandard2.0</XAMLToolsAssemblyDirectory>
+    <XAMLToolsAssemblyDirectory Condition="$(MSBuildRuntimeType) != 'Core'">$(XAMLToolsPath)net472</XAMLToolsAssemblyDirectory>
     <XAMLToolsAssembly Condition="$(XAMLToolsAssembly) == ''">$(XAMLToolsAssemblyDirectory)\$(MSBuildThisFileName).dll</XAMLToolsAssembly>
 
-    <XAMLToolsExecutable>$(XAMLToolsPath)tools\net8.0\XamlMerger.exe</XAMLToolsExecutable>
+    <XAMLToolsToolDirectory Condition="$(MSBuildRuntimeType) == 'Core'">$(XAMLToolsPath)tools\net8.0\</XAMLToolsToolDirectory>
+    <XAMLToolsToolDirectory Condition="$(MSBuildRuntimeType) != 'Core'">$(XAMLToolsPath)tools\net472\</XAMLToolsToolDirectory>
+    <XAMLToolsExecutable>$(XAMLToolsToolDirectory)\XamlMerger.exe</XAMLToolsExecutable>
 
     <MsBuildMajorVersion>15</MsBuildMajorVersion>
     <MsBuildMajorVersion Condition="'$(MSBuildVersion)' != ''">$([System.Version]::Parse($(MSBuildVersion)).Major)</MsBuildMajorVersion>
@@ -20,9 +23,9 @@
   <PropertyGroup Label="XAMLCombine">
     <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">true</XAMLCombineEnabled>
 
-    <RemoveXAMLCombineItemsFromPages Condition="'$(RemoveXAMLCombineItemsFromPages)' == '' And '$(Configuration)' == 'Debug'">False</RemoveXAMLCombineItemsFromPages>
+    <RemoveXAMLCombineItemsFromPages Condition="'$(RemoveXAMLCombineItemsFromPages)' == '' And '$(Configuration)' == 'Debug'">false</RemoveXAMLCombineItemsFromPages>
 
-    <RemoveXAMLCombineItemsFromPages Condition="'$(RemoveXAMLCombineItemsFromPages)' == ''">True</RemoveXAMLCombineItemsFromPages>
+    <RemoveXAMLCombineItemsFromPages Condition="'$(RemoveXAMLCombineItemsFromPages)' == ''">true</RemoveXAMLCombineItemsFromPages>
   </PropertyGroup>
 
   <PropertyGroup Label="XAMLColorSchemeGenerator">

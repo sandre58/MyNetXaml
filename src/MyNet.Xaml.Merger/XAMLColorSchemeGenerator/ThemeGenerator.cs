@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using JetBrains.Annotations;
 
-namespace MyNet.Xaml.Merger.Core.XAMLColorSchemeGenerator
+namespace MyNet.Xaml.Merger.XAMLColorSchemeGenerator
 {
     // This class has to be kept in sync with https://github.com/ControlzEx/ControlzEx/blob/develop/src/ControlzEx/Theming/ThemeGenerator.cs
     // Please do not remove unused code/properties here as it makes syncing more difficult.

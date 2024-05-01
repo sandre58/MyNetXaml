@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using MyNet.Xaml.Merger.Core.XAMLCombine;
+using MyNet.Xaml.Merger.XAMLCombine;
 using MyNet.Xaml.Merger.UnitTests.TestHelpers;
 using NUnit.Framework;
 using VerifyNUnit;

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
 
     <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">False</XAMLCombineEnabled>
@@ -12,6 +12,10 @@
   <Import Project="..\..\MyNet.Xaml.Merger.MSBuild\buildTarget\MyNet.Xaml.Merger.MSBuild.props" />
   <Import Project="..\..\MyNet.Xaml.Merger.MSBuild\buildTarget\MyNet.Xaml.Merger.MSBuild.targets" />
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj" />
+  </ItemGroup>
+  
   <PropertyGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
     <DefaultItemExcludes>$(DefaultItemExcludes);Themes/Controls/*.xaml</DefaultItemExcludes>
   </PropertyGroup>

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
 // See the LICENSE file in the project root for more information.
 
-namespace MyNet.Xaml.Merger.Core;
+namespace MyNet.Xaml.Merger;
 
 public interface ILogger
 {

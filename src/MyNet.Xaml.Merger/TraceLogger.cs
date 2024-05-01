@@ -3,7 +3,7 @@
 
 using System.Diagnostics;
 
-namespace MyNet.Xaml.Merger.Core;
+namespace MyNet.Xaml.Merger;
 
 public class TraceLogger : ILogger
 {

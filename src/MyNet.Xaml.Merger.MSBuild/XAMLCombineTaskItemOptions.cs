@@ -3,7 +3,7 @@
 
 using System;
 using Microsoft.Build.Framework;
-using MyNet.Xaml.Merger.Core.XAMLCombine;
+using MyNet.Xaml.Merger.XAMLCombine;
 
 namespace MyNet.Xaml.Merger.MSBuild;
 

@@ -18,7 +18,7 @@
 
   <!-- Configuration -->
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <BaseOutputPath>bin</BaseOutputPath>
     <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
@@ -33,7 +33,6 @@
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <IsTestProject>$(MSBuildProjectName.Contains('.UnitTests'))</IsTestProject>
     <IsTestApp>$(MSBuildProjectName.Contains('.TestApp'))</IsTestApp>
-    <IsCoreProject>$(MSBuildProjectName.Contains('.Core'))</IsCoreProject>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <IncludeSymbols>true</IncludeSymbols>
@@ -44,8 +43,8 @@
 
   <!-- Package -->
   <PropertyGroup>
-    <IsPackable Condition="'$(IsCoreProject)' != 'true' And '$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true'">true</IsPackable>
-    <GeneratePackageOnBuild Condition="'$(IsCoreProject)' != 'true' And '$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true' And '$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
+    <IsPackable Condition="'$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true'">true</IsPackable>
+    <GeneratePackageOnBuild Condition="'$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true' And '$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <RepositoryUrl>https://github.com/sandre58/MyNetXaml</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -67,7 +66,7 @@
     <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="All" includeAssets="build;compile"/>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(IsCoreProject)' != 'true' And '$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true'">
+  <ItemGroup Condition="'$(IsTestApp)' != 'true' And '$(IsTestProject)' != 'true'">
     <None Include="$(MSBuildThisFileDirectory)..\LICENSE" Pack="true" PackagePath="">
       <Link>_package/LICENSE</Link>
     </None>

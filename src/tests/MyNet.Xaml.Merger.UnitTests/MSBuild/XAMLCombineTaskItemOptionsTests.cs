@@ -2,7 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using Microsoft.Build.Utilities;
-using MyNet.Xaml.Merger.Core.XAMLCombine;
+using MyNet.Xaml.Merger.XAMLCombine;
 using MyNet.Xaml.Merger.MSBuild;
 using NUnit.Framework;
 

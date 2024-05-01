@@ -4,10 +4,10 @@
 using System.Threading.Tasks;
 using CommandLine;
 using JetBrains.Annotations;
-using MyNet.Xaml.Merger.Core.Helpers;
-using MyNet.Xaml.Merger.Core.XAMLColorSchemeGenerator;
+using MyNet.Xaml.Merger.Helpers;
+using MyNet.Xaml.Merger.XAMLColorSchemeGenerator;
 
-namespace MyNet.Xaml.Merger.Commands;
+namespace MyNet.Xaml.Merger.Console.Commands;
 
 [PublicAPI]
 [Verb("colorscheme", HelpText = "Generate XAML color scheme files.")]
