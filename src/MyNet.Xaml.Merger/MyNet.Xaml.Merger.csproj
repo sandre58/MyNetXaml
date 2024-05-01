@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
+    <ProjectReference PrivateAssets="all" Include="..\MyNet.Xaml.Merger.Core\MyNet.Xaml.Merger.Core.csproj" />
   </ItemGroup>
 
 </Project>
