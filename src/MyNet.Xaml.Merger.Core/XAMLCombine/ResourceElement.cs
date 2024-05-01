@@ -34,6 +34,6 @@ namespace MyNet.Xaml.Merger.Core.XAMLCombine
 
         public string? ElementDebugInfo { get; set; }
 
-        public string GetElementDebugInfo() => !string.IsNullOrEmpty(ElementDebugInfo) ? ElementDebugInfo : Element.ToString();
+        public string? GetElementDebugInfo() => !string.IsNullOrEmpty(ElementDebugInfo) ? ElementDebugInfo : Element.ToString();
     }
 }
