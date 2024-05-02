@@ -6,26 +6,8 @@
     <PackageTags>My;Xaml;MsBuild;Transform;Resource;Dictionary</PackageTags>
     <Version>$(GitVersion)</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <None Include="build/*.*" Pack="true" PackagePath="build" />
-    <None Include="buildMultiTargets/*.*" Pack="true" PackagePath="buildMultiTargets" />
-
-    <None Include="..\..\build\XamlMerger\$(Configuration)\net472\*.dll" Pack="true" PackagePath="tools/net472" Visible="False" />
-    <None Include="..\..\build\XamlMerger\$(Configuration)\net472\XamlMerger.exe" Pack="true" PackagePath="tools/net472" Visible="False" />
-    <None Include="..\..\build\XamlMerger\$(Configuration)\net472\XamlMerger.exe.config" Pack="true" PackagePath="tools/net472" Visible="False" />
-
-    <None Include="bin\$(Configuration)\net472\*.dll" Pack="true" PackagePath="build/net472" Visible="False" />
-
-    <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\*.dll" Pack="true" PackagePath="tools/net8.0" Visible="False" />
-    <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\XamlMerger.dll.config" Pack="true" PackagePath="tools/net8.0" Visible="False" />
-    <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\XamlMerger.deps.json" Pack="true" PackagePath="tools/net8.0" Visible="False" />
-    <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\XamlMerger.exe" Pack="true" PackagePath="tools/net8.0" Visible="False" />
-    <None Include="..\..\build\XamlMerger\$(Configuration)\net8.0\XamlMerger.runtimeconfig.json" Pack="true" PackagePath="tools/net8.0" Visible="False" />
-
-    <None Include="bin\$(Configuration)\netstandard2.0\*.dll" Pack="true" PackagePath="build/netstandard2.0" Visible="False" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.9.5" />
@@ -33,7 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyNet.Xaml.Merger.Console\MyNet.Xaml.Merger.Console.csproj" />
+    <ProjectReference Include="..\MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if &quot;$(TargetFramework)&quot; == &quot;netstandard2.0&quot; (powershell -ExecutionPolicy Unrestricted $(ProjectDir)../../scripts/PackNuget.ps1 $(MSBuildProjectName) $(Version))" />
+  </Target>
 
 </Project>

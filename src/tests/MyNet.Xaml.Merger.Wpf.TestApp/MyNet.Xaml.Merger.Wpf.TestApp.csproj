@@ -4,9 +4,9 @@
     <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
 
-    <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">True</XAMLCombineEnabled>
+    <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">False</XAMLCombineEnabled>
     <XAMLColorSchemeGeneratorEnabled Condition="'$(XAMLColorSchemeGeneratorEnabled)' == ''">False</XAMLColorSchemeGeneratorEnabled>
-    <XAMLToolsPath>..\bin\$(Configuration)\</XAMLToolsPath>
+    <XamlMergerMSBuildPath>..\bin\$(Configuration)\</XamlMergerMSBuildPath>
   </PropertyGroup>
 
   <Import Project="..\..\MyNet.Xaml.Merger.MSBuild\build\MyNet.Xaml.Merger.MSBuild.props" />

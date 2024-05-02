@@ -44,6 +44,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.Wpf.TestA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyNet.Xaml.Merger.UnitTests", "tests\MyNet.Xaml.Merger.UnitTests\MyNet.Xaml.Merger.UnitTests.csproj", "{CD76C9D0-A318-47E5-BD09-80E90FABAFC6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_scripts", "_scripts", "{EF48D221-7A2D-480E-879B-822E4615AD89}"
+	ProjectSection(SolutionItems) = preProject
+		..\scripts\PackNuget.ps1 = ..\scripts\PackNuget.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

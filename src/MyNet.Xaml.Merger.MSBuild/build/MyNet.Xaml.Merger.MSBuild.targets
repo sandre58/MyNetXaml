@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <UsingTask TaskName="MyNet.Xaml.Merger.MSBuild.XAMLCombineTask" AssemblyFile="$(XAMLToolsAssembly)"/>
-  <UsingTask TaskName="MyNet.Xaml.Merger.MSBuild.XAMLColorSchemeGeneratorTask" AssemblyFile="$(XAMLToolsAssembly)"/>
+  <UsingTask TaskName="MyNet.Xaml.Merger.MSBuild.XAMLCombineTask" AssemblyFile="$(XamlMergerMSBuildFilePath)"/>
+  <UsingTask TaskName="MyNet.Xaml.Merger.MSBuild.XAMLColorSchemeGeneratorTask" AssemblyFile="$(XamlMergerMSBuildFilePath)"/>
 
   <Target Name="XAMLCombine"
           BeforeTargets="$(XAMLCombineTargetsBefore)"
@@ -9,8 +9,7 @@
           DependsOnTargets="$(XAMLCombineDependsOnTargets)"
           Condition="'$(XAMLCombineEnabled)' == 'True' And $(MSBuildProjectName.Contains('_wpftmp')) != 'True'">
 
-    <Error Condition="($(MsBuildMajorVersion) &lt; 16)"
-           Text="XAMLTools is only supported on MSBuild 16 and above. Current version: $(MsBuildMajorVersion)."/>
+    <Error Condition="($(MsBuildMajorVersion) &lt; 16)" Text="XAMLTools is only supported on MSBuild 16 and above. Current version: $(MsBuildMajorVersion)."/>
 
     <XAMLCombineTask Items="@(XAMLCombineItems)">
       <Output ItemName="XAMLCombineGeneratedFiles" TaskParameter="GeneratedFiles"/>
@@ -37,8 +36,7 @@
           DependsOnTargets="$(XAMLColorSchemeGeneratorDependsOnTargets)"
           Condition="'$(XAMLColorSchemeGeneratorEnabled)' == 'True' And $(MSBuildProjectName.Contains('_wpftmp')) != 'True'">
 
-    <Error Condition="($(MsBuildMajorVersion) &lt; 16)"
-           Text="XAMLTools is only supported on MSBuild 16 and above. Current version: $(MsBuildMajorVersion)."/>
+    <Error Condition="($(MsBuildMajorVersion) &lt; 16)" Text="XAMLTools is only supported on MSBuild 16 and above. Current version: $(MsBuildMajorVersion)."/>
 
     <XAMLColorSchemeGeneratorTask Items="@(XAMLColorSchemeGeneratorItems)">
       <Output ItemName="XAMLColorSchemeGeneratorGeneratedFiles" TaskParameter="GeneratedFiles"/>
