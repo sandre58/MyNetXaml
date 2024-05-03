@@ -1486,11 +1486,6 @@ namespace MyNet.Xaml.Html
         /// not be used for data in this row. The ArrayList actually contains notation for all columns in the table, if the
         /// active row span is set to 0 that column is not presently spanned but if it is > 0 the column is presently spanned
         /// </param>
-        /// <param name="tableWidth">
-        /// Double value representing the current width of the table.
-        /// Return 0 if analisys was insuccessful.
-        /// </param>
-		/// <param name="stylesheet"></param>
         private static double AnalyzeTRStructure(XmlElement htmlTRElement, ArrayList columnStarts, ArrayList activeRowSpans)
         {
             double columnWidth;
