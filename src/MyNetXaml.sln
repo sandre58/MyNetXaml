@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_doc", "_doc", "{EAAD6BC8-1
 		..\CODE_OF_CONDUCT.md = ..\CODE_OF_CONDUCT.md
 		..\LICENSE = ..\LICENSE
 		..\images\logo.png = ..\images\logo.png
-		README.md = README.md
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_github", "_github", "{76710178-4DE5-4250-BD26-8CD72C42EF5A}"
