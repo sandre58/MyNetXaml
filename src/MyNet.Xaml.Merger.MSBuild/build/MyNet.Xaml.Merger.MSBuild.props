@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" TreatAsLocalProperty="MsBuildMajorVersion;IsBuildingInsideRider">
   <PropertyGroup>
-    <XamlMergerMSBuildPath Condition="$(XamlMergerMSBuildPath) == ''">$(MSBuildThisFileDirectory)..\lib\</XamlMergerMSBuildPath>
+    <XamlMergerMSBuildPath Condition="$(XamlMergerMSBuildPath) == ''">$(MSBuildThisFileDirectory)..\tools\</XamlMergerMSBuildPath>
     <XamlMergerMSBuildDirectory Condition="$(MSBuildRuntimeType) == 'Core'">$(XamlMergerMSBuildPath)netstandard2.0</XamlMergerMSBuildDirectory>
     <XamlMergerMSBuildDirectory Condition="$(MSBuildRuntimeType) != 'Core'">$(XamlMergerMSBuildPath)net472</XamlMergerMSBuildDirectory>
     <XamlMergerMSBuildFilePath Condition="$(XamlMergerMSBuildFilePath) == ''">$(XamlMergerMSBuildDirectory)\$(MSBuildThisFileName).dll</XamlMergerMSBuildFilePath>
