@@ -27,8 +27,12 @@
   <ItemGroup>
     <None Include="build/*.*" Pack="true" PackagePath="build" />
     <None Include="buildMultiTargeting/*.*" Pack="true" PackagePath="buildMultiTargeting" />
-    <None Include="$(OutputPath)/net472/*.dll" Pack="true" PackagePath="tools/net472" />
-    <None Include="$(OutputPath)/netstandard2.0/*.dll" Pack="true" PackagePath="tools/netstandard2.0" />
+    <Content Include="$(OutputPath)/net472/*.dll" Pack="true" PackagePath="tools/net472">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
+    <Content Include="$(OutputPath)/netstandard2.0/*.dll" Pack="true" PackagePath="tools/netstandard2.0">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+    </Content>
   </ItemGroup>
 
   <!--<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
