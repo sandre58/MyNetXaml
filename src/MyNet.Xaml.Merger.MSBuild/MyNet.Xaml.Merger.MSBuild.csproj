@@ -11,6 +11,10 @@
     <NoBuild>false</NoBuild>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.9.5" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
@@ -23,8 +27,12 @@
   <ItemGroup>
     <None Include="build/*.*" Pack="true" PackagePath="build" />
     <None Include="buildMultiTargeting/*.*" Pack="true" PackagePath="buildMultiTargeting" />
-    <None Include="bin/Release/net472/*.dll" Pack="true" PackagePath="tools/net472" Visible="False" />
-    <None Include="bin/Release/netstandard2.0/*.dll" Pack="true" PackagePath="tools/netstandard2.0" Visible="False" />
   </ItemGroup>
+
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
 
 </Project>

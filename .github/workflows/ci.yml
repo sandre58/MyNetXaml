@@ -59,6 +59,10 @@ jobs:
       dotnet-test-logger: GitHubActions --no-build --no-restore
       solution-path: .\src\MyNetXaml.sln
       nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}
+      artifacs-path: |
+                    ./Artifacts/
+                    ./src/MyNet.Xaml.Merger.MSBuild/bin/Release/net472
+                    ./src/MyNet.Xaml.Merger.MSBuild/bin/Release/netstandard2.0
     secrets:
       nugetUserName: ${{ vars.PRIVATE_NUGET_API_USERNAME }}
       nugetToken: ${{ secrets.PRIVATE_NUGET_API_KEY }}
