@@ -113,6 +113,6 @@ My .NET WPF is provided as-is under the MIT license. For more information see [L
 [downloads-shield]: https://img.shields.io/github/downloads/sandre58/MyNetXaml/total?style=for-the-badge
 [downloads-url]: https://github.com/sandre58/MyNetXaml/releases
 [framework-shield]: https://img.shields.io/badge/.NET-8.0-purple
-[framework-url]: https://github.com/sandre58/MyNetXaml/tree/main/src/MyNet.Wpf
-[version-shield]: https://img.shields.io/nuget/v/MyNet.Wpf
-[version-url]: https://www.nuget.org/packages/MyNet.Wpf
+[framework-url]: https://github.com/sandre58/MyNetXaml/tree/main/src/MyNet.Xaml.Merger.MSBuild
+[version-shield]: https://img.shields.io/nuget/v/MyNet.Xaml.Merger.MSBuild
+[version-url]: https://www.nuget.org/packages/MyNet.Xaml.Merger.MSBuild
