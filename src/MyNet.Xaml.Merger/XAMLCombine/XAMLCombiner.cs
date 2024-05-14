@@ -170,7 +170,7 @@ namespace MyNet.Xaml.Merger.XAMLCombine
                             foreach (var mergedDictionaryReference in element.Elements())
                             {
                                 // #65 => Import everything as is if it's not a regular ResourceDictionary
-                                if (mergedDictionaryReference.Name.LocalName != ResourceDictionaryString)
+                                if (!mergedDictionaryReference.Name.LocalName.Contains(ResourceDictionaryString))
                                 {
                                     // Import non ResourceDictionary reference element from processed XML document to final XML document
                                     var importedNonResourceDictionaryReference = new XElement(mergedDictionaryReference);
@@ -206,7 +206,7 @@ namespace MyNet.Xaml.Merger.XAMLCombine
                                     }
 
                                     // Check if it was already added
-                                    if (currentMergedSources.Exists(x => x is not null && x.Equals(sourceValue)))
+                                    if (currentMergedSources.Exists(x => x is not null && x.Value.Equals(sourceValue)))
                                     {
                                         continue;
                                     }

@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_config", "_config", "{246A
 		.editorconfig = .editorconfig
 		Directory.Build.props = Directory.Build.props
 		MyNetXaml.ruleset = MyNetXaml.ruleset
+		nuget.config = nuget.config
+		Settings.XamlStyler = Settings.XamlStyler
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{117DC9D7-9E2D-4D23-955F-E7892DC949A7}"
