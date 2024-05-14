@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.0.1] - 2024-05-14
+### :bug: Bug Fixes
+- [`545f458`](https://github.com/sandre58/MyNetXaml/commit/545f458dbdb9312a089c703653291eae0997e58f) - remove duplicates resources dictionaries *(commit by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v2.0.0] - 2024-05-05
 ### :bug: Bug Fixes
 - [`555eda5`](https://github.com/sandre58/MyNetXaml/commit/555eda590cee327e25d60238e60e60eb7d61e87b) - generate good nuget package *(commit by [@sandre58](https://github.com/sandre58))*
@@ -18,3 +23,4 @@
 - Initialize repository
 
 [v2.0.0]: https://github.com/sandre58/MyNetXaml/compare/v1.0.0...v2.0.0
+[v2.0.1]: https://github.com/sandre58/MyNetXaml/compare/v2.0.0...v2.0.1
