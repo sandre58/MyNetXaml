@@ -1,0 +1,112 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Actions", "Github Actions", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+		.github\workflows\release-please.yml = .github\workflows\release-please.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{2E7433DA-B851-4B09-A8BF-5E8265B474AC}"
+	ProjectSection(SolutionItems) = preProject
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+		.github\PULL_REQUEST_TEMPLATE.md = .github\PULL_REQUEST_TEMPLATE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{892DFD87-4C6A-412C-8243-7E9709DF5209}"
+	ProjectSection(SolutionItems) = preProject
+		.runsettings = .runsettings
+		build\code-analysis.props = build\code-analysis.props
+		build\dependencies.props = build\dependencies.props
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		global.json = global.json
+		NuGet.config = NuGet.config
+		build\package.props = build\package.props
+		Settings.XamlStyler = Settings.XamlStyler
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{FB9A9AA6-6119-43F3-9F1B-A4539F2DD1A3}"
+	ProjectSection(SolutionItems) = preProject
+		assets\MyNetXaml.png = assets\MyNetXaml.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code analysis", "Code analysis", "{015D541F-7A6E-4FF7-A267-7FA869C00DE0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Versioning", "Versioning", "{ECE90391-AE4A-42D9-8332-508DC90BABE6}"
+	ProjectSection(SolutionItems) = preProject
+		.release-please-manifest.json = .release-please-manifest.json
+		release-please-config.json = release-please-config.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{2C7D6C1B-A6CA-44B6-B604-FDD86A107640}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{761E88AC-1747-465B-BFFA-B7EFFD3F47B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNet.Xaml.Merger", "src\MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj", "{AD1329AD-9B47-7742-FB72-DA84BD2658E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNet.Xaml.Merger.MSBuild", "src\MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj", "{23B82540-DE0A-478B-A2F5-E3B46FA7965C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNet.Xaml.Merger.UnitTests", "tests\MyNet.Xaml.Merger.UnitTests\MyNet.Xaml.Merger.UnitTests.csproj", "{04BD5C2B-19A8-62FF-911D-436EB8119D75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNet.Xaml.Merger.Wpf.Demo", "demos\MyNet.Xaml.Merger.Wpf.Demo\MyNet.Xaml.Merger.Wpf.Demo.csproj", "{93D35624-C237-A517-E1AA-70430AF9DC9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{82E1B808-6233-4ACB-B154-37F1D2FE5105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNet.Xaml.Merger.Console", "tools\MyNet.Xaml.Merger.Console\MyNet.Xaml.Merger.Console.csproj", "{9BE13F53-353C-B3E8-3104-A0523C37B2BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD1329AD-9B47-7742-FB72-DA84BD2658E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD1329AD-9B47-7742-FB72-DA84BD2658E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD1329AD-9B47-7742-FB72-DA84BD2658E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD1329AD-9B47-7742-FB72-DA84BD2658E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B82540-DE0A-478B-A2F5-E3B46FA7965C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B82540-DE0A-478B-A2F5-E3B46FA7965C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B82540-DE0A-478B-A2F5-E3B46FA7965C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B82540-DE0A-478B-A2F5-E3B46FA7965C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04BD5C2B-19A8-62FF-911D-436EB8119D75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04BD5C2B-19A8-62FF-911D-436EB8119D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04BD5C2B-19A8-62FF-911D-436EB8119D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04BD5C2B-19A8-62FF-911D-436EB8119D75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D35624-C237-A517-E1AA-70430AF9DC9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D35624-C237-A517-E1AA-70430AF9DC9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D35624-C237-A517-E1AA-70430AF9DC9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D35624-C237-A517-E1AA-70430AF9DC9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BE13F53-353C-B3E8-3104-A0523C37B2BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BE13F53-353C-B3E8-3104-A0523C37B2BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BE13F53-353C-B3E8-3104-A0523C37B2BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BE13F53-353C-B3E8-3104-A0523C37B2BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E7433DA-B851-4B09-A8BF-5E8265B474AC} = {761E88AC-1747-465B-BFFA-B7EFFD3F47B6}
+		{892DFD87-4C6A-412C-8243-7E9709DF5209} = {761E88AC-1747-465B-BFFA-B7EFFD3F47B6}
+		{FB9A9AA6-6119-43F3-9F1B-A4539F2DD1A3} = {761E88AC-1747-465B-BFFA-B7EFFD3F47B6}
+		{015D541F-7A6E-4FF7-A267-7FA869C00DE0} = {761E88AC-1747-465B-BFFA-B7EFFD3F47B6}
+		{ECE90391-AE4A-42D9-8332-508DC90BABE6} = {761E88AC-1747-465B-BFFA-B7EFFD3F47B6}
+		{04BD5C2B-19A8-62FF-911D-436EB8119D75} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{93D35624-C237-A517-E1AA-70430AF9DC9F} = {2C7D6C1B-A6CA-44B6-B604-FDD86A107640}
+		{9BE13F53-353C-B3E8-3104-A0523C37B2BC} = {82E1B808-6233-4ACB-B154-37F1D2FE5105}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {075CDC9E-861B-4CC2-87C4-C6DD6DDB77B6}
+	EndGlobalSection
+EndGlobal

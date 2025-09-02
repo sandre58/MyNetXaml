@@ -32,25 +32,13 @@ jobs:
             9.0.x
             8.0.x
 
-      # Step 2b: Install wasm-tools workload
-      - name: Install wasm-tools workload
-        run: dotnet workload install wasm-tools
-
-      # Step 2c: Install android workload
-      - name: Install android workload
-        run: dotnet workload install android
-
-      # Step 2d: Restore .NET workloads
-      - name: Restore .NET workloads
-        run: dotnet workload restore
-
       # Step 3: Restore project dependencies
       - name: Restore
-        run: dotnet restore --property:EnableWindowsTargeting=true
+        run: dotnet restore
 
       # Step 4: Build the project
       - name: Build
-        run: dotnet build --configuration Release --no-restore --property:EnableWindowsTargeting=true
+        run: dotnet build --configuration Release --no-restore
 
       # Step 5: Run tests and collect code coverage
       - name: Run tests with coverage
