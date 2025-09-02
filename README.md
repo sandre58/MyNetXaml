@@ -3,116 +3,110 @@
 <!-- PROJECT INFO -->
 <br />
 <div align="center">
-  <a href="https://github.com/sandre58/MyNetXaml">
-    <img src="images/logo.png" width="256" height="256">
-  </a>
-
-<h1 align="center">My .NET Xaml</h1>
-
-[![Downloads][downloads-shield]][downloads-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-  <p align="center">
-Various tools for easing the development of XAML related applications.
-
-As i only use WPF myself everything is focused on WPF, but things should work for other XAML dialects (at least in theory).
-
-You can either use the commandline tool `MyNet.Xaml.Merger` or the MSBuild version `MyNet.Xaml.Merger.MSBuild` to make use of the provided functionalities.
-  </p>
-
-[![Language][language-shield]][language-url]
-[![Framework][framework-shield]][framework-url]
-[![Version][version-shield]][version-url]
-[![Build][build-shield]][build-url]
-
+  <img src="assets/MyNetUtilities.png" width="128" alt="MyNetUtilities">
+  <img src="assets/MyNetUI.png" width="128" alt="MyNetUI">
+  <img src="assets/MyNetObservable.png" width="128" alt="MyNetObservable">
+  <img src="assets/MyNetHumanizer.png" width="128" alt="MyNetHumanizer">
+  <img src="assets/MyNetCsvHelper.png" width="128" alt="MyNetCsvHelper">
+  <img src="assets/MyNetAutoMapper.png" width="128" alt="MyNetAutoMapper">
+  <img src="assets/MyNetHttp.png" width="128" alt="MyNetHttp">
+  <img src="assets/MyNetXaml.png" width="128" alt="MyNetXaml">
 </div>
 
-## XAMLCombine
+<h1 align="center">My .NET</h1>
 
-Combines multiple XAML files to one large file.  
-This is useful when you want to provide one `Generic.xaml` instead of multiple small XAML files.  
-Using one large XAML file not only makes it easier to consume, but can also drastically improving loading performance.
+[![MIT License][license-shield]][license-url]
+[![GitHub Stars](https://img.shields.io/github/stars/sandre58/mynet?style=for-the-badge)](https://github.com/sandre58/mynet/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/sandre58/mynet?style=for-the-badge)](https://github.com/sandre58/mynet/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/sandre58/mynet?style=for-the-badge)](https://github.com/sandre58/mynet/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/sandre58/mynet?style=for-the-badge)](https://github.com/sandre58/mynet/commits/main)
+[![Contributors](https://img.shields.io/github/contributors/sandre58/mynet?style=for-the-badge)](https://github.com/sandre58/mynet/graphs/contributors)
+[![Repo Size](https://img.shields.io/github/repo-size/sandre58/mynet?style=for-the-badge)](https://github.com/sandre58/mynet)
 
-### Using the MSBuild-Task
+A collection of useful libraries and extensions for .NET 8.0, designed to simplify development and enhance productivity. Each package is independent and can be used separately.
 
+## Packages
+
+[![Build][build-shield]][build-url]
+[![Coverage](https://codecov.io/gh/sandre58/mynet/branch/main/graph/badge.svg)](https://codecov.io/gh/sandre58/mynet)
+[![C#](https://img.shields.io/badge/language-C%23-blue)](#)
+[![.NET 8.0](https://img.shields.io/badge/.NET-8.0-purple)](#)
+[![.NET 9.0](https://img.shields.io/badge/.NET-9.0-purple)](#)
+[![.NET 10.0](https://img.shields.io/badge/.NET-10.0-purple)](#)
+
+| Package | Description | NuGet |
+|---|---|---|
+| [**MyNet.Utilities**](src/MyNet.Utilities) | Core utilities for .NET development: authentication, cache, encryption, geography, generator, Google, IO, localization, logging, mail, messaging, progress tracking, threading. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Utilities)](https://www.nuget.org/packages/MyNet.Utilities) |
+| [**MyNet.UI**](src/MyNet.UI) | UI helpers for notifications, dialogs, navigation, themes, and more. | [![NuGet](https://img.shields.io/nuget/v/MyNet.UI)](https://www.nuget.org/packages/MyNet.UI) |
+| [**MyNet.Observable**](src/MyNet.Observable) | Editable and validatable object base classes and utilities. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Observable)](https://www.nuget.org/packages/MyNet.Observable) |
+| [**MyNet.Humanizer**](src/MyNet.Humanizer) | Convert objects and values to human-readable strings. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Humanizer)](https://www.nuget.org/packages/MyNet.Humanizer) |
+| [**MyNet.CsvHelper.Extensions**](src/MyNet.CsvHelper.Extensions) | Extensions for CsvHelper to simplify CSV mapping and export. | [![NuGet](https://img.shields.io/nuget/v/MyNet.CsvHelper.Extensions)](https://www.nuget.org/packages/MyNet.CsvHelper.Extensions) |
+| [**MyNet.AutoMapper.Extensions**](src/MyNet.AutoMapper.Extensions) | Extensions and helpers for AutoMapper integration. | [![NuGet](https://img.shields.io/nuget/v/MyNet.AutoMapper.Extensions)](https://www.nuget.org/packages/MyNet.AutoMapper.Extensions) |
+| [**MyNet.Http**](src/MyNet.Http) | HTTP client helpers and extensions. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Http)](https://www.nuget.org/packages/MyNet.Http) |
+| [**MyNet.Utilities.Generator.Extensions**](src/MyNet.Utilities.Generator.Extensions) | Generate random data for testing and simulations. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Utilities.Generator.Extensions)](https://www.nuget.org/packages/MyNet.Utilities.Generator.Extensions) |
+| [**MyNet.Utilities.Geography.Extensions**](src/MyNet.Utilities.Geography.Extensions) | Access detailed geography information. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Utilities.Geography.Extensions)](https://www.nuget.org/packages/MyNet.Utilities.Geography.Extensions) |
+| [**MyNet.Utilities.Localization.Extensions**](src/MyNet.Utilities.Localization.Extensions) | Localization resources and helpers. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Utilities.Localization.Extensions)](https://www.nuget.org/packages/MyNet.Utilities.Localization.Extensions) |
+| [**MyNet.Utilities.Logging.NLog**](src/MyNet.Utilities.Logging.NLog) | Logging integration with NLog. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Utilities.Logging.NLog)](https://www.nuget.org/packages/MyNet.Utilities.Logging.NLog) |
+| [**MyNet.Utilities.Mail.MailKit**](src/MyNet.Utilities.Mail.MailKit) | Email sending with MailKit. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Utilities.Mail.MailKit)](https://www.nuget.org/packages/MyNet.Utilities.Mail.MailKit) |
+| [**MyNet.Avalonia**](src/Avalonia/MyNet.Avalonia) | Avalonia UI helpers and extensions. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Avalonia)](https://www.nuget.org/packages/MyNet.Avalonia) |
+| [**MyNet.Avalonia.Controls**](src/Avalonia/MyNet.Avalonia.Controls) | Custom Avalonia controls. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Avalonia.Controls)](https://www.nuget.org/packages/MyNet.Avalonia.Controls) |
+| [**MyNet.Avalonia.Theme**](src/Avalonia/MyNet.Avalonia.Theme) | Avalonia theming resources. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Avalonia.Theme)](https://www.nuget.org/packages/MyNet.Avalonia.Theme) |
+| [**MyNet.Avalonia.UI**](src/Avalonia/MyNet.Avalonia.UI) | UI extensions for Avalonia. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Avalonia.UI)](https://www.nuget.org/packages/MyNet.Avalonia.UI) |
+| [**MyNet.Xaml.Html**](src/Wpf/MyNet.Xaml.Html) | XAML to HTML conversion and helpers. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Xaml.Html)](https://www.nuget.org/packages/MyNet.Xaml.Html) |
+| [**MyNet.Wpf**](src/Wpf/MyNet.Wpf) | WPF helpers and extensions. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Wpf)](https://www.nuget.org/packages/MyNet.Wpf) |
+| [**MyNet.Wpf.DragAndDrop**](src/Wpf/MyNet.Wpf.DragAndDrop) | WPF drag and drop helpers. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Wpf.DragAndDrop)](https://www.nuget.org/packages/MyNet.Wpf.DragAndDrop) |
+| [**MyNet.Wpf.LiveCharts**](src/Wpf/MyNet.Wpf.LiveCharts) | WPF LiveCharts integration. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Wpf.LiveCharts)](https://www.nuget.org/packages/MyNet.Wpf.LiveCharts) |
+| [**MyNet.Wpf.Presentation**](src/Wpf/MyNet.Wpf.Presentation) | WPF presentation helpers. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Wpf.Presentation)](https://www.nuget.org/packages/MyNet.Wpf.Presentation) |
+| [**MyNet.Wpf.Web**](src/Wpf/MyNet.Wpf.Web) | WPF web integration. | [![NuGet](https://img.shields.io/nuget/v/MyNet.Wpf.Web)](https://www.nuget.org/packages/MyNet.Wpf.Web) |
+
+## Getting Started
+
+To install a package, use NuGet:
+
+```bash
+# Example for core utilities
+ dotnet add package MyNet.Utilities
+# Example for UI helpers
+ dotnet add package MyNet.UI
+# Example for Observable
+ dotnet add package MyNet.Observable
+# Example for Humanizer
+ dotnet add package MyNet.Humanizer
+# Example for CsvHelper Extensions
+ dotnet add package MyNet.CsvHelper.Extensions
 ```
-<XAMLCombineItems Include="Themes/Controls/*.xaml">
-  <TargetFile>Themes/Generic.xaml</TargetFile>
-</XAMLCombineItems>
-```
 
-The MSBuild-Task includes the items used for combining as pages during debug builds and removes them from pages during release builds.
-This is done to reduce the binary size for release builds and still enable intellisense in debug builds for those XAML files.
+See each package's README for usage details and API documentation.
 
-**Remarks when using Rider**  
-To get intellisense in debug builds inside the XAML files and to prevent duplicate display of those files you have to define:
+## Repository Structure
 
-```
-<PropertyGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
-  <DefaultItemExcludes>$(DefaultItemExcludes);Themes\Controls\*.xaml</DefaultItemExcludes>
-</PropertyGroup>
+- `src/` — Source code for all packages:
+  - `MyNet.Utilities*` — Core utilities and extensions
+  - `MyNet.UI` — UI helpers
+  - `MyNet.Observable` — Observable object helpers
+  - `MyNet.Humanizer` — Humanization helpers
+  - `MyNet.CsvHelper.Extensions` — CSV helpers
+  - `MyNet.AutoMapper.Extensions` — AutoMapper helpers
+  - `MyNet.Http` — HTTP helpers
+  - `Avalonia/` — Avalonia UI packages
+  - `Wpf/` — WPF packages
 
-<ItemGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
-  <Page Include="Themes\Controls\*.xaml" />
-</ItemGroup>
-```
-
-### Using the executable
-
-`XAMLTools` accepts the following commandline parameters for the `combine` verb:
-
-- `-s "Path_To_Your_SourceFile"` => A file containing a new line separated list of files to combine (lines starting with # are skipped)
-- `-t "Path_To_Your_Target_File.xaml"`
-
-## XAMLColorSchemeGenerator
-
-Generates color scheme XAML files while replacing certain parts of a template file.
-
-For an example on how this tool works see the [generator input](src/MyNet.Xaml.Merger/XAMLColorSchemeGenerator/GeneratorParameters.json) and [template](src/MyNet.Xaml.Merger/XAMLColorSchemeGenerator/ColorScheme.Template.xaml) files.
-
-### Using the MSBuild-Task
-
-```
-<XAMLColorSchemeGeneratorItems Include="Themes\ColorScheme.Template.xaml">
-  <ParametersFile>Themes\GeneratorParameters.json</ParametersFile>
-  <OutputPath>Themes\ColorSchemes</OutputPath>
-</XAMLColorSchemeGeneratorItems>
-```
-
-### Using the executable
-
-`XAMLTools` accepts the following commandline parameters for the `colorscheme` verb:
-
-- `-p "Path_To_Your_GeneratorParameters.json"`
-- `-t "Path_To_Your_ColorScheme.Template.xaml"`
-- `-o "Path_To_Your_Output_Folder"`
+- `demos/` — Demo applications for Avalonia and WPF
+- `tests/` — Unit tests for core and extensions
+- `assets/` — Logos and images
+- `build/` — Build configuration and shared MSBuild props
+- `scripts/` — Build and test scripts
+- `.github/` — GitHub workflows and automation
+- `.config/`, `.editorconfig`, `.gitignore`, etc. — Configuration files
 
 ## License
 
-Copyright � St�phane ANDRE.
+Copyright © Stéphane ANDRE.
 
-My .NET WPF is provided as-is under the MIT license. For more information see [LICENSE](./LICENSE).
+Distributed under the MIT License. See [LICENSE](./LICENSE) for details.
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[language-shield]: https://img.shields.io/github/languages/top/sandre58/MyNetXaml
-[language-url]: https://github.com/sandre58/MyNetXaml
-[forks-shield]: https://img.shields.io/github/forks/sandre58/MyNetXaml?style=for-the-badge
-[forks-url]: https://github.com/sandre58/MyNetXaml/network/members
-[stars-shield]: https://img.shields.io/github/stars/sandre58/MyNetXaml?style=for-the-badge
-[stars-url]: https://github.com/sandre58/MyNetXaml/stargazers
-[issues-shield]: https://img.shields.io/github/issues/sandre58/MyNetXaml?style=for-the-badge
-[issues-url]: https://github.com/sandre58/MyNetXaml/issues
-[license-shield]: https://img.shields.io/github/license/sandre58/MyNetXaml?style=for-the-badge
-[license-url]: https://github.com/sandre58/MyNetXaml/blob/main/LICENSE
-[build-shield]: https://img.shields.io/github/actions/workflow/status/sandre58/MyNetXaml/ci.yml?logo=github&label=CI
-[build-url]: https://github.com/sandre58/MyNetXaml/actions
-[downloads-shield]: https://img.shields.io/github/downloads/sandre58/MyNetXaml/total?style=for-the-badge
-[downloads-url]: https://github.com/sandre58/MyNetXaml/releases
-[framework-shield]: https://img.shields.io/badge/.NET-8.0-purple
-[framework-url]: https://github.com/sandre58/MyNetXaml/tree/main/src/MyNet.Xaml.Merger.MSBuild
-[version-shield]: https://img.shields.io/nuget/v/MyNet.Xaml.Merger.MSBuild
-[version-url]: https://www.nuget.org/packages/MyNet.Xaml.Merger.MSBuild
+[license-shield]: https://img.shields.io/github/license/sandre58/MyNet?style=for-the-badge
+[license-url]: https://github.com/sandre58/MyNet/blob/main/LICENSE
+[build-shield]: https://img.shields.io/github/actions/workflow/status/sandre58/MyNet/ci.yml?logo=github&label=CI
+[build-url]: https://github.com/sandre58/MyNet/actions

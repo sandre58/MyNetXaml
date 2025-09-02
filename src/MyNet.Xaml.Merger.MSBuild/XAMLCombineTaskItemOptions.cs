@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="XAMLCombineTaskItemOptions.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using Microsoft.Build.Framework;
@@ -36,22 +39,20 @@ public sealed class XAMLCombineTaskItemOptions : IXamlCombinerOptions, IEquatabl
     public override bool Equals(object? obj) => !(obj is not XAMLCombineTaskItemOptions other) && Equals(other);
 
     public bool Equals(XAMLCombineTaskItemOptions? other) => other is not null && (ReferenceEquals(this, other)
-               || TargetFile == other.TargetFile
+               || (TargetFile == other.TargetFile
                && ImportMergedResourceDictionaryReferences == other.ImportMergedResourceDictionaryReferences
                && WriteFileHeader == other.WriteFileHeader
                && FileHeader == other.FileHeader
-               && IncludeSourceFilesInFileHeader == other.IncludeSourceFilesInFileHeader);
+               && IncludeSourceFilesInFileHeader == other.IncludeSourceFilesInFileHeader));
 
     public override int GetHashCode()
     {
         unchecked
         {
-            var hashCode = (TargetFile != null
-                ? TargetFile.GetHashCode()
-                : 0);
+            var hashCode = TargetFile?.GetHashCode(StringComparison.InvariantCultureIgnoreCase) ?? 0;
             hashCode = (hashCode * 397) ^ ImportMergedResourceDictionaryReferences.GetHashCode();
             hashCode = (hashCode * 397) ^ WriteFileHeader.GetHashCode();
-            hashCode = (hashCode * 397) ^ FileHeader.GetHashCode();
+            hashCode = (hashCode * 397) ^ FileHeader.GetHashCode(StringComparison.InvariantCultureIgnoreCase);
             hashCode = (hashCode * 397) ^ IncludeSourceFilesInFileHeader.GetHashCode();
             return hashCode;
         }

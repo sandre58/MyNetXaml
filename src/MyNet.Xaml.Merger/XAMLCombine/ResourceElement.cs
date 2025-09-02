@@ -1,39 +1,34 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ResourceElement.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.Xml.Linq;
 
-namespace MyNet.Xaml.Merger.XAMLCombine
+namespace MyNet.Xaml.Merger.XAMLCombine;
+
+/// <summary>
+/// Represents a XAML resource.
+/// </summary>
+public class ResourceElement(string key, XElement element, string[] usedKeys)
 {
     /// <summary>
-    /// Represents a XAML resource.
+    /// Gets resource key.
     /// </summary>
-    public class ResourceElement
-    {
-        public ResourceElement(string key, XElement element, string[] usedKeys)
-        {
-            Key = key;
-            Element = element;
-            UsedKeys = usedKeys;
-        }
+    public string Key { get; } = key;
 
-        /// <summary>
-        /// Resource key.
-        /// </summary>
-        public string Key { get; }
+    /// <summary>
+    /// Gets resource XML node.
+    /// </summary>
+    public XElement Element { get; } = element;
 
-        /// <summary>
-        /// Resource XML node.
-        /// </summary>
-        public XElement Element { get; }
+    /// <summary>
+    /// Gets xAML keys used in this resource.
+    /// </summary>
+    public string[] UsedKeys { get; } = usedKeys;
 
-        /// <summary>
-        /// XAML keys used in this resource.
-        /// </summary>
-        public string[] UsedKeys { get; }
+    public string? ElementDebug { get; set; }
 
-        public string? ElementDebugInfo { get; set; }
-
-        public string? GetElementDebugInfo() => !string.IsNullOrEmpty(ElementDebugInfo) ? ElementDebugInfo : Element.ToString();
-    }
+    public string? GetElementDebugInfo() => !string.IsNullOrEmpty(ElementDebug) ? ElementDebug : Element.ToString();
 }

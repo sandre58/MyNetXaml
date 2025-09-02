@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="FileHelper.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.IO;
@@ -20,13 +23,8 @@ public static class FileHelper
             {
                 return ReadAllTextShared(file);
             }
-            catch (IOException)
+            catch (IOException) when (i != retries - 1)
             {
-                if (i == retries - 1)
-                {
-                    throw;
-                }
-
                 Thread.Sleep(TimeSpan.FromSeconds(1));
             }
         }
@@ -36,18 +34,9 @@ public static class FileHelper
 
     public static string ReadAllTextShared(string file)
     {
-        Stream? stream = null;
-        try
-        {
-            stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read, BufferSize);
+        using var stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read, BufferSize);
 
-            using var textReader = new StreamReader(stream, Encoding.UTF8);
-            stream = null;
-            return textReader.ReadToEnd();
-        }
-        finally
-        {
-            stream?.Dispose();
-        }
+        using var textReader = new StreamReader(stream, Encoding.UTF8);
+        return textReader.ReadToEnd();
     }
 }

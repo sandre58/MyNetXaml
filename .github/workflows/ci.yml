@@ -1,64 +1,93 @@
-# Copyright (c) Stéphane ANDRE.
-# Licensed under the MIT license.
-
-# This continuous integration pipeline is triggered anytime a user pushes code to main branch.
-# This pipeline builds the solution and runs unit tests
-
-name: Build
+name: CI
 
 on:
   push:
-      branches:
-        - main
-      paths:
-        - .github/workflows/ci.yml
-        - .github/GitVersion.yml
-        - 'src/**'
-  workflow_dispatch:
+    branches: [ "main", "feature/*" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write      # required to push to gh-pages
+  pages: write         # required to publish to GitHub Pages
+  id-token: write      # required for OIDC authentication if needed
 
 jobs:
 
-  # GitVersion
-  gitversion:
-    timeout-minutes: 5
-    runs-on: windows-latest
-    outputs:
-      full_version: ${{ steps.gitversion.outputs.SemVer }}
-      suffix_label: ${{ steps.gitversion.outputs.PreReleaseLabel }}
-
+  build:
+    runs-on: ubuntu-latest
     steps:
 
-      # Checkout
+      # Step 1: Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4
-        with: 
-          fetch-depth: 0
-
-      # Install Git version
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v1.1.1
         with:
-          versionSpec: '5.x'
+          fetch-depth: 0 # required for NBGV
 
-      # Check Git version
-      - name: Check Git Semantic Version
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v1.1.1 # https://github.com/GitTools/actions/blob/main/docs/examples/github/gitversion/execute/usage-examples.md
+      # Step 2: Set up .NET SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          useConfigFile: true
-          configFilePath: .\.github\GitVersion.yml
-          disableNormalization: true
+          dotnet-version: |
+            10.0.x
+            9.0.x
+            8.0.x
 
-  # Build and test
-  build-and-tests:
-    uses: avantipoint/workflow-templates/.github/workflows/dotnet-build.yml@master # https://github.com/AvantiPoint/workflow-templates/blob/master/.github/workflows/dotnet-build.yml
-    needs: [ gitversion ]
-    with:
-      name: Build all projects
-      build-args: '/p:GitVersion=${{ needs.gitversion.outputs.full_version }} /p:VersionSuffix=${{ needs.gitversion.outputs.suffix_label }}'
-      dotnet-test-logger: GitHubActions --no-build --no-restore
-      solution-path: .\src\MyNetXaml.sln
-      nugetFeedUrl: ${{ vars.PRIVATE_NUGET_API_SOURCE }}
-    secrets:
-      nugetUserName: ${{ vars.PRIVATE_NUGET_API_USERNAME }}
-      nugetToken: ${{ secrets.PRIVATE_NUGET_API_KEY }}
+      # Step 2b: Install wasm-tools workload
+      - name: Install wasm-tools workload
+        run: dotnet workload install wasm-tools
+
+      # Step 2c: Install android workload
+      - name: Install android workload
+        run: dotnet workload install android
+
+      # Step 2d: Restore .NET workloads
+      - name: Restore .NET workloads
+        run: dotnet workload restore
+
+      # Step 3: Restore project dependencies
+      - name: Restore
+        run: dotnet restore --property:EnableWindowsTargeting=true
+
+      # Step 4: Build the project
+      - name: Build
+        run: dotnet build --configuration Release --no-restore --property:EnableWindowsTargeting=true
+
+      # Step 5: Run tests and collect code coverage
+      - name: Run tests with coverage
+        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
+
+      # Step 6: Generate coverage report
+      - name: Report coverage
+        uses: danielpalme/ReportGenerator-GitHub-Action@v5
+        with:
+          reports: '**/coverage.cobertura.xml'
+          targetdir: 'coverage-report'
+          reporttypes: 'Html;Cobertura;MarkdownSummary'
+
+      # Step 7: Upload coverage report as artifact
+      - name: Upload coverage report as artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./coverage-report
+
+      # Step 8: Upload coverage to Codecov
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: '**/coverage.cobertura.xml'
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      
+      # Step 9: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        id: deployment
+        uses: actions/deploy-pages@v4

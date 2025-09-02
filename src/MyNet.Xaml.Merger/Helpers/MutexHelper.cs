@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="MutexHelper.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.IO;
@@ -9,7 +12,7 @@ namespace MyNet.Xaml.Merger.Helpers;
 
 public static class MutexHelper
 {
-    public static T ExecuteLocked<T>(Func<T> action, string file, TimeSpan? timeout = null, string errorMessage = "Another instance of this application blocked the concurrent execution.", string? caller = null)
+    public static T ExecuteLocked<T>(Func<T> action, string file, TimeSpan? timeout = null, string errorMessage = "Another instance of this application blocked the concurrent execution.")
     {
         var mutexName = "Local\\XamlMerger_" + Path.GetFileName(file);
 
@@ -30,7 +33,7 @@ public static class MutexHelper
         }
     }
 
-    public static void ExecuteLocked(Action action, string file, TimeSpan? timeout = null, string errorMessage = "Another instance of this application blocked the concurrent execution.", string? caller = null)
+    public static void ExecuteLocked(Action action, string file, TimeSpan? timeout = null, string errorMessage = "Another instance of this application blocked the concurrent execution.")
     {
         var mutexName = "Local\\XamlMerger_" + Path.GetFileName(file);
 
