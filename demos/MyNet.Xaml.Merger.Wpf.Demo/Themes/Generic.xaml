@@ -4,10 +4,10 @@
 -->
 <!--
 Source files:
-{SolutionDirectory}demos\MyNet.Xaml.Merger.Wpf.Demo\Themes\Controls\Control1.xaml
-{SolutionDirectory}demos\MyNet.Xaml.Merger.Wpf.Demo\Themes\Controls\Control2.xaml
-{SolutionDirectory}demos\MyNet.Xaml.Merger.Wpf.Demo\Themes\Controls\Control3.xaml
-{SolutionDirectory}demos\MyNet.Xaml.Merger.Wpf.Demo\Themes\Controls\zConverters.xaml
+Themes\Controls\Control1.xaml
+Themes\Controls\Control2.xaml
+Themes\Controls\Control3.xaml
+Themes\Controls\zConverters.xaml
 -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:controls1="clr-namespace:MyNet.Xaml.Merger.Wpf.Demo.Controls.MyControl1Namespace" xmlns:sys2="clr-namespace:System;assembly=mscorlib" xmlns:controls2="clr-namespace:MyNet.Xaml.Merger.Wpf.Demo.Controls.MyControl2Namespace">
   <Color x:Key="Control1_Color">#FF2B579A</Color>

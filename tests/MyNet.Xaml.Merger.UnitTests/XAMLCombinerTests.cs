@@ -30,7 +30,7 @@ namespace MyNet.Xaml.Merger.UnitTests
         {
             var timeout = Debugger.IsAttached ? 500000 : 5000;
             var currentAssemblyDir = Path.GetDirectoryName(GetType().Assembly.Location)!;
-            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../MyNet.Xaml.Merger.Wpf.Demo"));
+            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../../demos/MyNet.Xaml.Merger.Wpf.Demo"));
             var themeFilesDirectory = Path.GetFullPath(Path.Combine(wpfAppDirectory, "Themes/Controls"));
             var themeFilePaths = Directory.GetFiles(themeFilesDirectory, "*.xaml", SearchOption.AllDirectories);
 
@@ -66,7 +66,7 @@ namespace MyNet.Xaml.Merger.UnitTests
         {
             var timeout = Debugger.IsAttached ? 500000 : 5000;
             var currentAssemblyDir = Path.GetDirectoryName(GetType().Assembly.Location)!;
-            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../MyNet.Xaml.Merger.Wpf.Demo"));
+            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../../demos/MyNet.Xaml.Merger.Wpf.Demo"));
             var themeFilesDirectory = Path.GetFullPath(Path.Combine(wpfAppDirectory, "Themes/WinUI"));
             var themeFilePaths = Directory.GetFiles(themeFilesDirectory, "*.xaml", SearchOption.AllDirectories);
 
@@ -101,13 +101,13 @@ namespace MyNet.Xaml.Merger.UnitTests
         public void TestDuplicateNamespaces()
         {
             var currentAssemblyDir = Path.GetDirectoryName(GetType().Assembly.Location)!;
-            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../MyNet.Xaml.Merger.Wpf.Demo"));
+            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../../demos/MyNet.Xaml.Merger.Wpf.Demo"));
             var themeFilesDirectory = Path.GetFullPath(Path.Combine(wpfAppDirectory, "Themes/DuplicateNamespaces"));
             var themeFilePaths = Directory.GetFiles(themeFilesDirectory, "*.xaml", SearchOption.AllDirectories);
 
-            var xamlCombiner = new MyNet.Xaml.Merger.XAMLCombine.XAMLCombiner();
+            var xamlCombiner = new XAMLCombine.XAMLCombiner();
 
-            var ex = Assert.Throws<Exception>(() => xamlCombiner.Combine(themeFilePaths, _targetFile));
+            var ex = Assert.Throws<InvalidOperationException>(() => xamlCombiner.Combine(themeFilePaths, _targetFile));
             Assert.Contains("Namespace name \"controls\" with different values was seen in ", ex.Message, StringComparison.Ordinal);
         }
 
@@ -115,13 +115,13 @@ namespace MyNet.Xaml.Merger.UnitTests
         public void TestDuplicateKeys()
         {
             var currentAssemblyDir = Path.GetDirectoryName(GetType().Assembly.Location)!;
-            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../MyNet.Xaml.Merger.Wpf.Demo"));
+            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../../demos/MyNet.Xaml.Merger.Wpf.Demo"));
             var themeFilesDirectory = Path.GetFullPath(Path.Combine(wpfAppDirectory, "Themes/DuplicateKeys"));
             var themeFilePaths = Directory.GetFiles(themeFilesDirectory, "*.xaml", SearchOption.AllDirectories);
 
             var testLogger = new TestLogger();
 
-            var xamlCombiner = new MyNet.Xaml.Merger.XAMLCombine.XAMLCombiner
+            var xamlCombiner = new XAMLCombine.XAMLCombiner
             {
                 Logger = testLogger
             };
