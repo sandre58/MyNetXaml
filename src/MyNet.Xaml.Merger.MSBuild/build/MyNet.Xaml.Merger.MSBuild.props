@@ -4,14 +4,12 @@
         <XamlMergerMSBuildPath Condition="$(XamlMergerMSBuildPath) == ''">$(MSBuildThisFileDirectory)..\tools\</XamlMergerMSBuildPath>
         
         <!-- Framework selection based on MSBuild version -->
-        <XamlMergerMSBuildDirectory Condition="$(MSBuildRuntimeType) == 'Core' and '$(MSBuildVersion)' != '' and $([System.Version]::Parse($(MSBuildVersion)).Major) >= 18">$(XamlMergerMSBuildPath)net10.0</XamlMergerMSBuildDirectory>
-        <XamlMergerMSBuildDirectory Condition="$(MSBuildRuntimeType) == 'Core' and '$(MSBuildVersion)' != '' and $([System.Version]::Parse($(MSBuildVersion)).Major) == 17">$(XamlMergerMSBuildPath)net9.0</XamlMergerMSBuildDirectory>
-        <XamlMergerMSBuildDirectory Condition="$(MSBuildRuntimeType) == 'Core' and '$(MSBuildVersion)' != '' and $([System.Version]::Parse($(MSBuildVersion)).Major) == 16">$(XamlMergerMSBuildPath)net8.0</XamlMergerMSBuildDirectory>
-        <XamlMergerMSBuildDirectory Condition="$(MSBuildRuntimeType) == 'Core' and '$(XamlMergerMSBuildDirectory)' == ''">$(XamlMergerMSBuildPath)net8.0</XamlMergerMSBuildDirectory>
-        <XamlMergerMSBuildDirectory Condition="$(MSBuildRuntimeType) != 'Core'">$(XamlMergerMSBuildPath)net472</XamlMergerMSBuildDirectory>
+        <XamlMergerMSBuildDirectory Condition="'$(XamlMergerMSBuildDirectory)' == ''">$(XamlMergerMSBuildPath)net8.0</XamlMergerMSBuildDirectory>
+        <XamlMergerMSBuildDirectory Condition="'$(XamlMergerMSBuildDirectory)' == '' And $(MSBuildRuntimeType) == 'Core' and '$(MSBuildVersion)' != '' and $([System.Version]::Parse($(MSBuildVersion)).Major) >= 18">$(XamlMergerMSBuildPath)net10.0</XamlMergerMSBuildDirectory>
+        <XamlMergerMSBuildDirectory Condition="'$(XamlMergerMSBuildDirectory)' == '' And $(MSBuildRuntimeType) == 'Core' and '$(MSBuildVersion)' != '' and $([System.Version]::Parse($(MSBuildVersion)).Major) == 17">$(XamlMergerMSBuildPath)net9.0</XamlMergerMSBuildDirectory>
         
         <XamlMergerMSBuildFilePath Condition="$(XamlMergerMSBuildFilePath) == ''">$(XamlMergerMSBuildDirectory)\$(MSBuildThisFileName).dll</XamlMergerMSBuildFilePath>
-
+        
         <MsBuildMajorVersion>15</MsBuildMajorVersion>
         <MsBuildMajorVersion Condition="'$(MSBuildVersion)' != ''">$([System.Version]::Parse($(MSBuildVersion)).Major)</MsBuildMajorVersion>
 

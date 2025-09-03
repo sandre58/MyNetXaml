@@ -78,6 +78,7 @@ public class MSBuildCompileTests
             "themes/colorschemes/light.yellow.baml",
             "themes/colorschemes/dark.blue.colorful.baml",
             "themes/colorschemes/dark.green.colorful.highcontrast.baml",
+            "themes/controls/zconverters.baml",
             "themes/colorschemes/dark.yellow.baml",
             "themes/generic.baml",
             "themes/colorschemes/light.blue.baml",
@@ -86,10 +87,9 @@ public class MSBuildCompileTests
             "themes/colorschemes/dark.green.highcontrast.baml",
             "themes/colorschemes/dark.blue.baml",
             "themes/colorschemes/light.green.highcontrast.baml",
-            "themes/controls/control3.baml",
             "themes/controls/control2.baml",
             "themes/controls/control1.baml",
-            "themes/controls/zconverters.baml",
+            "themes/controls/control3.baml"
         },
         xamlResourceNames);
     }
