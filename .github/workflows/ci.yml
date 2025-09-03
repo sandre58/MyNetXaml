@@ -22,6 +22,18 @@ jobs:
         with:
           fetch-depth: 0 # required for NBGV
 
+      # Step 1.5: Setup GitVersion
+      - name: Setup GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9
+        with:
+          versionSpec: '5.x'
+
+      - name: Run GitVersion
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9
+        with:
+          useConfigFile: true
+
       # Step 2: Set up .NET SDK
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -33,15 +45,15 @@ jobs:
 
       # Step 3: Restore project dependencies
       - name: Restore
-        run: dotnet restore --property:EnableWindowsTargeting=true
+        run: dotnet restore --property:EnableWindowsTargeting=true --property:Version=${{ steps.gitversion.outputs.FullSemVer }}
 
       # Step 4: Build the project
       - name: Build
-        run: dotnet build --configuration Release --no-restore --property:EnableWindowsTargeting=true
+        run: dotnet build --configuration Release --no-restore --property:EnableWindowsTargeting=true --property:Version=${{ steps.gitversion.outputs.FullSemVer }}
 
       # Step 5: Run tests and collect code coverage
       - name: Run tests with coverage
-        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
+        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage" --property:Version=${{ steps.gitversion.outputs.FullSemVer }}
 
       # Step 6: Generate coverage report
       - name: Report coverage
