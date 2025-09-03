@@ -4,14 +4,12 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-using System;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using CliWrap;
 using CliWrap.Buffered;
 using Xunit;
-using Xunit.Sdk;
 
 namespace MyNet.Xaml.Merger.UnitTests;
 

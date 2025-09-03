@@ -66,7 +66,7 @@ jobs:
       # Publish Apps
       - name: Publish Console App
         run: |
-          dotnet publish tools/MyNet.Xaml.Merger.Console/MyNet.Xaml.Merger.Console.csproj -c Release -p:Version=${{ steps.gitversion.outputs.fullSemVer }} -o artifacts/tools
+          dotnet publish tools/MyNet.Xaml.Merger.Console/MyNet.Xaml.Merger.Console.csproj -c Release -p:Version=${{ steps.gitversion.outputs.FullSemVer }} -o artifacts/tools
 
       # Generate coverage report
       - name: Report coverage
