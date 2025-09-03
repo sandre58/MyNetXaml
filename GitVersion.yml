@@ -8,7 +8,7 @@ branches:
 
   feature:
     regex: ^features?[/-]
-    tag: alpha
+    tag: beta
     increment: minor
     source-branches: [ master ]
 

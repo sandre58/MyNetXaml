@@ -57,7 +57,7 @@ jobs:
 
       # Run tests and collect code coverage
       - name: Run tests with coverage
-        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage" --property:Version=${{ steps.gitversion.outputs.FullSemVer }}
+        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage" --filter "Category!=Integration" --property:Version=${{ steps.gitversion.outputs.FullSemVer }}
 
         # Pack NuGets
       - name: Pack NuGets

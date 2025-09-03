@@ -18,15 +18,9 @@ namespace MyNet.Xaml.Merger.UnitTests;
 public class MSBuildCompileTests
 {
     [Fact]
+    [Trait("Category", "Integration")]
     public async Task CheckCompileOutputAfterGitCleanAsync()
     {
-        // Skip this integration-style test on CI environments
-        if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("CI")) ||
-            string.Equals(Environment.GetEnvironmentVariable("GITHUB_ACTIONS"), "true", StringComparison.OrdinalIgnoreCase))
-        {
-            throw SkipException.ForSkip("Skipping integration test on CI environment.");
-        }
-
         var currentAssemblyDir = Path.GetDirectoryName(GetType().Assembly.Location)!;
         var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../../demos/MyNet.Xaml.Merger.Wpf.Demo"));
 
