@@ -57,16 +57,16 @@ jobs:
 
       # Run tests and collect code coverage
       - name: Run tests with coverage
-        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage" --filter "Category!=Integration" --property:Version=${{ steps.gitversion.outputs.FullSemVer }}
+        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"  --logger GitHubActions --filter "Category!=Integration" --property:Version=${{ steps.gitversion.outputs.FullSemVer }}
 
         # Pack NuGets
       - name: Pack NuGets
-        run: dotnet pack --configuration Release --no-build -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersionV2 }} -o artifacts/packages
+        run: dotnet pack --configuration Release --no-build -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersionV2 }} -o nugets
         
       # Publish Apps
       - name: Publish Console App
         run: |
-          dotnet publish tools/MyNet.Xaml.Merger.Console/MyNet.Xaml.Merger.Console.csproj -c Release -p:Version=${{ steps.gitversion.outputs.FullSemVer }} -o artifacts/tools
+          dotnet publish tools/MyNet.Xaml.Merger.Console/MyNet.Xaml.Merger.Console.csproj -c Release -p:Version=${{ steps.gitversion.outputs.FullSemVer }} -o XamlMerger
 
       # Generate coverage report
       - name: Report coverage
@@ -90,12 +90,19 @@ jobs:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      # Upload artifacts
-      - name: Upload artifacts
+      # Upload nugets
+      - name: Upload NuGets
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifacts
-          path: artifacts
+            name: NuGets
+            path: "nugets"
+
+      # Upload Console App
+      - name: Upload Console App
+        uses: actions/upload-artifact@v4
+        with:
+          name: XamlMerger
+          path: "XamlMerger"
 
   # Only on main branch : Deploy coverage report
   deploy-coverage:
@@ -174,5 +181,5 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            artifacts/packages/*.nupkg
-            artifacts/tools/**
+            nugets/*.nupkg
+            XamlMerger/**
