@@ -27,7 +27,7 @@ public class MSBuildCompileTests
 
         var assemblyConfigurationAttribute = GetType().Assembly.GetCustomAttribute<AssemblyConfigurationAttribute>();
         var configuration = assemblyConfigurationAttribute?.Configuration;
-        var binPath = Path.Combine(wpfAppDirectory, "bin", configuration ?? string.Empty);
+        var binPath = Path.GetFullPath(Path.Combine(wpfAppDirectory, "..", "..", "artifacts", "demos", "MyNet.Xaml.Merger.Wpf.Demo", configuration ?? string.Empty));
 
         var result = await Cli.Wrap("git")
                               .WithArguments("clean -fxd")
@@ -64,8 +64,8 @@ public class MSBuildCompileTests
         Assert.Equal(new[]
         {
             "MyNet.Xaml.Merger.Wpf.Demo.g.resources",
-            "MyNet.Xaml.Merger.Wpf.Demo.Themes.ColorScheme.Template.xaml",
-            "MyNet.Xaml.Merger.Wpf.Demo.Themes.GeneratorParameters.json"
+            "MyNet.Xaml.Merger.Wpf.Demo.Themes.GeneratorParameters.json",
+            "MyNet.Xaml.Merger.Wpf.Demo.Themes.ColorScheme.Template.xaml"
         },
         resourceNames);
 

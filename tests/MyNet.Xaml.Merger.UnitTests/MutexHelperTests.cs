@@ -27,18 +27,17 @@ namespace MyNet.Xaml.Merger.UnitTests
             {
                 await Task.WhenAll(tasks);
             }
-            catch (AggregateException ex)
+            catch (Exception ex)
             {
                 // Expect TimeoutException, Mutex shoudn't throw any ApplicationException
-                var innerException = ex.InnerException;
-                Assert.True(innerException is TimeoutException, $"InnerException was {innerException?.GetType().Name}");
+                Assert.True(ex is TimeoutException, $"InnerException was {ex.GetType().Name}");
             }
         }
 
         private void ThreadStartFunction()
         {
             var currentAssemblyDir = Path.GetDirectoryName(GetType().Assembly.Location)!;
-            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../MyNet.Xaml.Merger.Wpf.Demo"));
+            var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../../demos/MyNet.Xaml.Merger.Wpf.Demo"));
             var themeFilesDirectory = Path.GetFullPath(Path.Combine(wpfAppDirectory, "Themes/Controls"));
             var themeFileName = Directory.GetFiles(themeFilesDirectory, "*.xaml", SearchOption.AllDirectories).FirstOrDefault()!;
             MutexHelper.ExecuteLocked(() => Thread.Sleep(3000), themeFileName, timeout: TimeSpan.FromSeconds(2));

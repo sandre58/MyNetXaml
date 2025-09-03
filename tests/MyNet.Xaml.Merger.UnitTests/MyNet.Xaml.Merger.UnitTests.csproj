@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj" />
-    <ProjectReference Include="..\..\src\MyNet.Xaml.Merger\MyNet.Xaml.Merger.csproj" />
+    <ProjectReference Include="..\..\tools\MyNet.Xaml.Merger.Console\MyNet.Xaml.Merger.Console.csproj" />
   </ItemGroup>
 
 </Project>
