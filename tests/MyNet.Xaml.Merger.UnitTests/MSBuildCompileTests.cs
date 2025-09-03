@@ -4,12 +4,14 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using CliWrap;
 using CliWrap.Buffered;
 using Xunit;
+using Xunit.Sdk;
 
 namespace MyNet.Xaml.Merger.UnitTests;
 
@@ -18,6 +20,13 @@ public class MSBuildCompileTests
     [Fact]
     public async Task CheckCompileOutputAfterGitCleanAsync()
     {
+        // Skip this integration-style test on CI environments
+        if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("CI")) ||
+            string.Equals(Environment.GetEnvironmentVariable("GITHUB_ACTIONS"), "true", StringComparison.OrdinalIgnoreCase))
+        {
+            throw SkipException.ForSkip("Skipping integration test on CI environment.");
+        }
+
         var currentAssemblyDir = Path.GetDirectoryName(GetType().Assembly.Location)!;
         var wpfAppDirectory = Path.GetFullPath(Path.Combine(currentAssemblyDir, "../../../../../demos/MyNet.Xaml.Merger.Wpf.Demo"));
 
@@ -43,7 +52,7 @@ public class MSBuildCompileTests
                           .WithValidation(CommandResultValidation.None)
                           .ExecuteBufferedAsync();
 
-        Assert.True(result.ExitCode <= 0);
+        Assert.Equal(0, result.ExitCode);
 
         var assemblyFile = Path.Combine(binPath, assemblyName);
         var outputPath = Path.GetDirectoryName(assemblyFile)!;
