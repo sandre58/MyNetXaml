@@ -27,9 +27,6 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
         <!-- Output builds -->
-        <BaseOutputPath Condition="'$(IsDemoProject)' != 'True' And '$(IsConsoleProject)' != 'True'">bin</BaseOutputPath>
-        <BaseOutputPath Condition="'$(IsDemoProject)' == 'True'">$(MSBuildThisFileDirectory)\artifacts\demos\$(MSBuildProjectName)</BaseOutputPath>
-        <BaseOutputPath Condition="'$(IsConsoleProject)' == 'True'">$(MSBuildThisFileDirectory)\artifacts\tools\$(MSBuildProjectName)</BaseOutputPath>
         <AppendTargetFrameworkToOutputPath Condition="'$(IsDemoProject)' != 'True' And '$(IsConsoleProject)' != 'True'">true</AppendTargetFrameworkToOutputPath>
         <AppendTargetFrameworkToOutputPath Condition="'$(IsDemoProject)' == 'True' Or '$(IsConsoleProject)' == 'True'">false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
