@@ -1,9 +1,5 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-    <PropertyGroup>
-        <AvaloniaVersion>11.3.4</AvaloniaVersion>
-    </PropertyGroup>
-    
     <!-- Source link -->
     <ItemGroup Condition="'$(IsDemoProject)' != 'True' And '$(IsTestProject)' != 'True' And '$(IsConsoleProject)' != 'True'">
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
