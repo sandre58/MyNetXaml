@@ -68,6 +68,11 @@ jobs:
         run: |
           dotnet publish tools/MyNet.Xaml.Merger.Console/MyNet.Xaml.Merger.Console.csproj -c Release -p:Version=${{ steps.gitversion.outputs.FullSemVer }} -o XamlMerger
 
+      # Zip the published console app into a single archive
+      - name: Zip Console App
+        run: |
+          powershell -Command "Compress-Archive -Path 'XamlMerger\\*' -DestinationPath 'XamlMerger.zip' -Force"
+
       # Generate coverage report
       - name: Report coverage
         uses: danielpalme/ReportGenerator-GitHub-Action@v5
@@ -102,7 +107,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: XamlMerger
-          path: "XamlMerger"
+          path: "XamlMerger.zip"
 
   # Only on main branch : Deploy coverage report
   deploy-coverage:
@@ -186,4 +191,4 @@ jobs:
           prerelease: false
           files: |
             nugets/*.nupkg
-            XamlMerger/**
+            XamlMerger.zip
