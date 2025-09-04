@@ -1,8 +1,7 @@
 mode: ContinuousDeployment
 branches:
-  master:
-    regex: ^master$
-    tag: ''
+  main:
+    regex: ^main$
     increment: patch
     is-release-branch: true
 
@@ -15,3 +14,4 @@ branches:
 ignore:
   sha: []
 commit-message-incrementing: Enabled
+merge-message-strategy: MergeMessage
