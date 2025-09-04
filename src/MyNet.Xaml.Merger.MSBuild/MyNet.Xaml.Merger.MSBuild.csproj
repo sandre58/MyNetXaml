@@ -25,5 +25,7 @@
         <None Include="build\*.targets" Pack="true" PackagePath="build\" />
         <None Include="buildMultiTargeting\*.props" Pack="true" PackagePath="buildMultiTargeting\" />
         <None Include="buildMultiTargeting\*.targets" Pack="true" PackagePath="buildMultiTargeting\" />
+        <!-- Include all DLLs from the build output directory recursively so dependencies copied to output are packaged into tools/netstandard2.0 -->
+        <None Include="$(TargetDir)bin\$(Configuration)\**\*.dll" Pack="true" PackagePath="tools" />
     </ItemGroup>
 </Project>
