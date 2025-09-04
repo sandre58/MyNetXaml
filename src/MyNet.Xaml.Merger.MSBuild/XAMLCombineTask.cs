@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="XAMLCombineTask.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
@@ -9,66 +12,65 @@ using Microsoft.Build.Utilities;
 using MyNet.Xaml.Merger.Helpers;
 using MyNet.Xaml.Merger.XAMLCombine;
 
-namespace MyNet.Xaml.Merger.MSBuild
+namespace MyNet.Xaml.Merger.MSBuild;
+
+public class XAMLCombineTask : Task
 {
-    public class XAMLCombineTask : Task
+    [Required]
+    public ITaskItem[] Items { get; set; } = null!;
+
+    [Output]
+    public ITaskItem[]? GeneratedFiles { get; set; }
+
+    public override bool Execute()
     {
-        [Required]
-        public ITaskItem[] Items { get; set; } = null!;
+        var generatedFiles = new List<ITaskItem>();
 
-        [Output]
-        public ITaskItem[]? GeneratedFiles { get; set; }
+        var grouped = Items.GroupBy(XAMLCombineTaskItemOptions.From);
 
-        public override bool Execute()
+        foreach (var group in grouped)
         {
-            var generatedFiles = new List<ITaskItem>();
+            var options = group.Key;
+            var targetFile = options.TargetFile;
 
-            var grouped = Items.GroupBy(XAMLCombineTaskItemOptions.From);
-
-            foreach (var group in grouped)
+            if (targetFile is null or { Length: 0 })
             {
-                var options = group.Key;
-                var targetFile = options.TargetFile;
-
-                if (targetFile is null or { Length: 0 })
-                {
-                    continue;
-                }
-
-                var sourceFiles = group.Select(x => x.ItemSpec).ToList();
-
-                BuildEngine.LogMessageEvent(new BuildMessageEventArgs($"Generating combined XAML file \"{targetFile}\".", string.Empty, nameof(XAMLCombineTask), MessageImportance.High));
-
-                if (options.ImportMergedResourceDictionaryReferences)
-                {
-                    BuildEngine.LogMessageEvent(new BuildMessageEventArgs($"Import for merged ResourceDictionary elements enabled for this generated content", string.Empty, "XAMLCombine", MessageImportance.Low));
-                }
-
-                var combiner = new XAMLCombiner
-                {
-                    ImportMergedResourceDictionaryReferences = options.ImportMergedResourceDictionaryReferences,
-                    WriteFileHeader = options.WriteFileHeader,
-                    FileHeader = options.FileHeader,
-                    IncludeSourceFilesInFileHeader = options.IncludeSourceFilesInFileHeader,
-                    Logger = new MSBuildLogger(BuildEngine, nameof(XAMLCombineTask))
-                };
-
-                try
-                {
-                    targetFile = MutexHelper.ExecuteLocked(() => combiner.Combine(sourceFiles, targetFile), targetFile);
-                }
-                catch (Exception exception)
-                {
-                    BuildEngine.LogErrorEvent(new BuildErrorEventArgs("XAMLCombine", "XAMLCombine_Exception", string.Empty, 0, 0, 0, 0, exception.ToString(), string.Empty, "XAMLCombine"));
-                    return false;
-                }
-
-                generatedFiles.Add(new TaskItem(targetFile));
+                continue;
             }
 
-            GeneratedFiles = [.. generatedFiles];
+            var sourceFiles = group.Select(x => x.ItemSpec).ToList();
 
-            return true;
+            BuildEngine.LogMessageEvent(new BuildMessageEventArgs($"Generating combined XAML file \"{targetFile}\".", string.Empty, nameof(XAMLCombineTask), MessageImportance.High));
+
+            if (options.ImportMergedResourceDictionaryReferences)
+            {
+                BuildEngine.LogMessageEvent(new BuildMessageEventArgs("Import for merged ResourceDictionary elements enabled for this generated content", string.Empty, "XAMLCombine", MessageImportance.Low));
+            }
+
+            var combiner = new XAMLCombiner
+            {
+                ImportMergedResourceDictionaryReferences = options.ImportMergedResourceDictionaryReferences,
+                WriteFileHeader = options.WriteFileHeader,
+                FileHeader = options.FileHeader,
+                IncludeSourceFilesInFileHeader = options.IncludeSourceFilesInFileHeader,
+                Logger = new MSBuildLogger(BuildEngine, nameof(XAMLCombineTask))
+            };
+
+            try
+            {
+                targetFile = MutexHelper.ExecuteLocked(() => combiner.Combine(sourceFiles, targetFile), targetFile);
+            }
+            catch (Exception exception)
+            {
+                BuildEngine.LogErrorEvent(new BuildErrorEventArgs("XAMLCombine", "XAMLCombine_Exception", string.Empty, 0, 0, 0, 0, exception.ToString(), string.Empty, "XAMLCombine"));
+                return false;
+            }
+
+            generatedFiles.Add(new TaskItem(targetFile));
         }
+
+        GeneratedFiles = [.. generatedFiles];
+
+        return true;
     }
 }

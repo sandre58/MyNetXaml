@@ -1,21 +1,17 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="MSBuildLogger.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using Microsoft.Build.Framework;
-using ILogger = MyNet.Xaml.Merger.ILogger;
 
 namespace MyNet.Xaml.Merger.MSBuild;
 
-public class MSBuildLogger : ILogger
+public class MSBuildLogger(IBuildEngine buildEngine, string senderName) : ILogger
 {
-    private readonly IBuildEngine _buildEngine;
-    private readonly string _senderName;
-
-    public MSBuildLogger(IBuildEngine buildEngine, string senderName)
-    {
-        _buildEngine = buildEngine;
-        _senderName = senderName;
-    }
+    private readonly IBuildEngine _buildEngine = buildEngine;
+    private readonly string _senderName = senderName;
 
     public void Debug(string message) => _buildEngine.LogMessageEvent(new(message, string.Empty, _senderName, MessageImportance.Low));
 

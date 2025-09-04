@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFrameworks>net10.0-windows</TargetFrameworks>
+        <UseWPF>true</UseWPF>
+
+        <XAMLCombineEnabled Condition="'$(XAMLCombineEnabled)' == ''">False</XAMLCombineEnabled>
+        <XAMLColorSchemeGeneratorEnabled Condition="'$(XAMLColorSchemeGeneratorEnabled)' == ''">False</XAMLColorSchemeGeneratorEnabled>
+        <XamlMergerMSBuildPath>..\bin\$(Configuration)\</XamlMergerMSBuildPath>
+    </PropertyGroup>
+
+    <Import Project="..\..\src\MyNet.Xaml.Merger.MSBuild\build\MyNet.Xaml.Merger.MSBuild.props" />
+    <Import Project="..\..\src\MyNet.Xaml.Merger.MSBuild\build\MyNet.Xaml.Merger.MSBuild.targets" />
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\MyNet.Xaml.Merger.MSBuild\MyNet.Xaml.Merger.MSBuild.csproj" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
+        <DefaultItemExcludes>$(DefaultItemExcludes);Themes/Controls/*.xaml</DefaultItemExcludes>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(IsBuildingInsideRider)' == 'True'">
+        <Page Include="Themes/Controls/*.xaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <XAMLCombineItems Include="Themes/Controls/*.xaml">
+            <TargetFile>Themes/Generic.xaml</TargetFile>
+            <Visible>False</Visible>
+        </XAMLCombineItems>
+    </ItemGroup>
+
+    <ItemGroup>
+        <XAMLColorSchemeGeneratorItems Include="Themes/ColorScheme.Template.xaml">
+            <ParametersFile>Themes/GeneratorParameters.json</ParametersFile>
+            <OutputPath>Themes/ColorSchemes</OutputPath>
+        </XAMLColorSchemeGeneratorItems>
+    </ItemGroup>
+
+    <ItemGroup Label="WinUI">
+        <Page Remove="Themes/WinUI/*.xaml" />
+        <None Include="Themes/WinUI/*.xaml" />
+    </ItemGroup>
+
+    <ItemGroup Label="Faulty">
+        <Page Remove="Themes/DuplicateKeys/*.xaml" />
+        <None Include="Themes/DuplicateKeys/*.xaml" />
+
+        <Page Remove="Themes/DuplicateNamespaces/*.xaml" />
+        <None Include="Themes/DuplicateNamespaces/*.xaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Themes\GeneratorParameters.json" />
+        <EmbeddedResource Include="Themes\GeneratorParameters.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Page Remove="Themes\ColorScheme.Template.xaml" />
+        <EmbeddedResource Include="Themes\ColorScheme.Template.xaml" />
+    </ItemGroup>
+
+</Project>

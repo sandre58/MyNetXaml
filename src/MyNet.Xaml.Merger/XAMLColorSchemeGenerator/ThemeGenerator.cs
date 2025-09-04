@@ -1,111 +1,103 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ThemeGenerator.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using JetBrains.Annotations;
 
-namespace MyNet.Xaml.Merger.XAMLColorSchemeGenerator
+namespace MyNet.Xaml.Merger.XAMLColorSchemeGenerator;
+
+public class ThemeGenerator
 {
-    // This class has to be kept in sync with https://github.com/ControlzEx/ControlzEx/blob/develop/src/ControlzEx/Theming/ThemeGenerator.cs
-    // Please do not remove unused code/properties here as it makes syncing more difficult.
-    [PublicAPI]
-    public class ThemeGenerator
+    public static ThemeGenerator Current { get; set; }
+
+    static ThemeGenerator() => Current = new ThemeGenerator();
+
+    public virtual ThemeGeneratorParameters GetParametersFromString(string input) => System.Text.Json.JsonSerializer.Deserialize<ThemeGeneratorParameters>(input) ?? new ThemeGeneratorParameters();
+
+    // The order of the passed valueSources is important.
+    // More specialized/concrete values must be passed first and more generic ones must follow.
+    public virtual string GenerateColorSchemeFileContent(string templateContent, string themeName, string themeDisplayName, string baseColorScheme, string colorScheme, string alternativeColorScheme, bool isHighContrast, params Dictionary<string, string>[] valueSources)
     {
-        public static ThemeGenerator Current { get; set; }
+        templateContent = templateContent.Replace("{{ThemeName}}", themeName, System.StringComparison.OrdinalIgnoreCase)
+                                         .Replace("{{ThemeDisplayName}}", themeDisplayName, System.StringComparison.OrdinalIgnoreCase)
+                                         .Replace("{{BaseColorScheme}}", baseColorScheme, System.StringComparison.OrdinalIgnoreCase)
+                                         .Replace("{{ColorScheme}}", colorScheme, System.StringComparison.OrdinalIgnoreCase)
+                                         .Replace("{{AlternativeColorScheme}}", alternativeColorScheme, System.StringComparison.OrdinalIgnoreCase)
+                                         .Replace("{{IsHighContrast}}", isHighContrast.ToString(), System.StringComparison.OrdinalIgnoreCase);
 
-        static ThemeGenerator()
+        bool contentChanged;
+
+        // Loop till content does not change anymore.
+        do
         {
-            Current = new ThemeGenerator();
-        }
+            contentChanged = false;
 
-        public virtual ThemeGeneratorParameters GetParametersFromString(string input)
-        {
-            return System.Text.Json.JsonSerializer.Deserialize<ThemeGeneratorParameters>(input) ?? new ThemeGeneratorParameters();
-        }
-
-        // The order of the passed valueSources is important.
-        // More specialized/concrete values must be passed first and more generic ones must follow.
-        public virtual string GenerateColorSchemeFileContent(string templateContent, string themeName, string themeDisplayName, string baseColorScheme, string colorScheme, string alternativeColorScheme, bool isHighContrast, params Dictionary<string, string>[] valueSources)
-        {
-            templateContent = templateContent.Replace("{{ThemeName}}", themeName);
-            templateContent = templateContent.Replace("{{ThemeDisplayName}}", themeDisplayName);
-            templateContent = templateContent.Replace("{{BaseColorScheme}}", baseColorScheme);
-            templateContent = templateContent.Replace("{{ColorScheme}}", colorScheme);
-            templateContent = templateContent.Replace("{{AlternativeColorScheme}}", alternativeColorScheme);
-            templateContent = templateContent.Replace("{{IsHighContrast}}", isHighContrast.ToString());
-
-            bool contentChanged;
-
-            // Loop till content does not change anymore.
-            do
+            foreach (var valueSource in valueSources)
             {
-                contentChanged = false;
-
-                foreach (var valueSource in valueSources)
+                foreach (var value in valueSource)
                 {
-                    foreach (var value in valueSource)
+                    var finalValue = value.Value;
+                    var newTemplateContent = templateContent.Replace($"{{{{{value.Key}}}}}", finalValue, System.StringComparison.OrdinalIgnoreCase);
+
+                    if (templateContent != newTemplateContent)
                     {
-                        var finalValue = value.Value;
-                        var newTemplateContent = templateContent.Replace($"{{{{{value.Key}}}}}", finalValue);
-
-                        if (templateContent != newTemplateContent)
-                        {
-                            contentChanged = true;
-                        }
-
-                        templateContent = newTemplateContent;
+                        contentChanged = true;
                     }
+
+                    templateContent = newTemplateContent;
                 }
             }
-            while (contentChanged);
-
-            return templateContent;
         }
+        while (contentChanged);
 
-        [PublicAPI]
-        public class ThemeGeneratorParameters
-        {
-            public Dictionary<string, string> DefaultValues { get; set; } = new Dictionary<string, string>();
-
-            public ThemeGeneratorBaseColorScheme[] BaseColorSchemes { get; set; } = new ThemeGeneratorBaseColorScheme[0];
-
-            public ThemeGeneratorColorScheme[] ColorSchemes { get; set; } = new ThemeGeneratorColorScheme[0];
-
-            public AdditionalColorSchemeVariant[] AdditionalColorSchemeVariants { get; set; } = new AdditionalColorSchemeVariant[0];
-        }
-
-        [PublicAPI]
-        [DebuggerDisplay("{" + nameof(Name) + "}")]
-        public class ThemeGeneratorBaseColorScheme
-        {
-            public string Name { get; set; } = string.Empty;
-
-            public Dictionary<string, string> Values { get; set; } = new Dictionary<string, string>();
-        }
-
-        [PublicAPI]
-        [DebuggerDisplay("{" + nameof(Name) + "}")]
-        public class AdditionalColorSchemeVariant
-        {
-            public string Name { get; set; } = string.Empty;
-
-            public Dictionary<string, string> Values { get; set; } = new Dictionary<string, string>();
-        }
-
-        [PublicAPI]
-        [DebuggerDisplay("{" + nameof(Name) + "}")]
-        public class ThemeGeneratorColorScheme
-        {
-            public string Name { get; set; } = string.Empty;
-
-            public string ForBaseColor { get; set; } = string.Empty;
-
-            public string ForColorSchemeVariant { get; set; } = string.Empty;
-
-            public bool IsHighContrast { get; set; }
-
-            public Dictionary<string, string> Values { get; set; } = new Dictionary<string, string>();
-        }
+        return templateContent;
     }
+}
+
+public class ThemeGeneratorParameters
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Used by serialization")]
+    public Dictionary<string, string> DefaultValues { get; set; } = [];
+
+    public ThemeGeneratorBaseColorScheme[] BaseColorSchemes { get; set; } = [];
+
+    public ThemeGeneratorColorScheme[] ColorSchemes { get; set; } = [];
+
+    public AdditionalColorSchemeVariant[] AdditionalColorSchemeVariants { get; set; } = [];
+}
+
+[DebuggerDisplay("{" + nameof(Name) + "}")]
+public class ThemeGeneratorBaseColorScheme
+{
+    public string Name { get; set; } = string.Empty;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Used by serialization")]
+    public Dictionary<string, string> Values { get; set; } = [];
+}
+
+[DebuggerDisplay("{" + nameof(Name) + "}")]
+public class AdditionalColorSchemeVariant
+{
+    public string Name { get; set; } = string.Empty;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Used by serialization")]
+    public Dictionary<string, string> Values { get; set; } = [];
+}
+
+[DebuggerDisplay("{" + nameof(Name) + "}")]
+public class ThemeGeneratorColorScheme
+{
+    public string Name { get; set; } = string.Empty;
+
+    public string ForBaseColor { get; set; } = string.Empty;
+
+    public string ForColorSchemeVariant { get; set; } = string.Empty;
+
+    public bool IsHighContrast { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Used by serialization")]
+    public Dictionary<string, string> Values { get; set; } = [];
 }

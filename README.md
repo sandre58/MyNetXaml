@@ -3,32 +3,31 @@
 <!-- PROJECT INFO -->
 <br />
 <div align="center">
-  <a href="https://github.com/sandre58/MyNetXaml">
-    <img src="images/logo.png" width="256" height="256">
-  </a>
+  <img src="assets/MyNetXaml.png" width="256" height="256" alt="MyNetXaml">
+</div>
 
-<h1 align="center">My .NET Xaml</h1>
+<h1 align="center">My .NET</h1>
 
-[![Downloads][downloads-shield]][downloads-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![GitHub Stars](https://img.shields.io/github/stars/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/commits/main)
+[![Contributors](https://img.shields.io/github/contributors/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/graphs/contributors)
+[![Repo Size](https://img.shields.io/github/repo-size/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml)
 
-  <p align="center">
 Various tools for easing the development of XAML related applications.
 
 As i only use WPF myself everything is focused on WPF, but things should work for other XAML dialects (at least in theory).
 
 You can either use the commandline tool `MyNet.Xaml.Merger` or the MSBuild version `MyNet.Xaml.Merger.MSBuild` to make use of the provided functionalities.
-  </p>
 
-[![Language][language-shield]][language-url]
-[![Framework][framework-shield]][framework-url]
-[![Version][version-shield]][version-url]
 [![Build][build-shield]][build-url]
-
-</div>
+[![Coverage](https://codecov.io/gh/sandre58/mynetxaml/branch/main/graph/badge.svg)](https://codecov.io/gh/sandre58/mynetxaml)
+[![C#](https://img.shields.io/badge/language-C%23-blue)](#)
+[![.NET 8.0](https://img.shields.io/badge/.NET-8.0-purple)](#)
+[![.NET 9.0](https://img.shields.io/badge/.NET-9.0-purple)](#)
+[![.NET 10.0](https://img.shields.io/badge/.NET-10.0-purple)](#)
 
 ## XAMLCombine
 
@@ -92,27 +91,12 @@ For an example on how this tool works see the [generator input](src/MyNet.Xaml.M
 
 ## License
 
-Copyright © Stéphane ANDRE.
+Copyright Â© StÃ©phane ANDRE.
 
-My .NET WPF is provided as-is under the MIT license. For more information see [LICENSE](./LICENSE).
+Distributed under the MIT License. See [LICENSE](./LICENSE) for details.
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[language-shield]: https://img.shields.io/github/languages/top/sandre58/MyNetXaml
-[language-url]: https://github.com/sandre58/MyNetXaml
-[forks-shield]: https://img.shields.io/github/forks/sandre58/MyNetXaml?style=for-the-badge
-[forks-url]: https://github.com/sandre58/MyNetXaml/network/members
-[stars-shield]: https://img.shields.io/github/stars/sandre58/MyNetXaml?style=for-the-badge
-[stars-url]: https://github.com/sandre58/MyNetXaml/stargazers
-[issues-shield]: https://img.shields.io/github/issues/sandre58/MyNetXaml?style=for-the-badge
-[issues-url]: https://github.com/sandre58/MyNetXaml/issues
-[license-shield]: https://img.shields.io/github/license/sandre58/MyNetXaml?style=for-the-badge
-[license-url]: https://github.com/sandre58/MyNetXaml/blob/main/LICENSE
-[build-shield]: https://img.shields.io/github/actions/workflow/status/sandre58/MyNetXaml/ci.yml?logo=github&label=CI
-[build-url]: https://github.com/sandre58/MyNetXaml/actions
-[downloads-shield]: https://img.shields.io/github/downloads/sandre58/MyNetXaml/total?style=for-the-badge
-[downloads-url]: https://github.com/sandre58/MyNetXaml/releases
-[framework-shield]: https://img.shields.io/badge/.NET-8.0-purple
-[framework-url]: https://github.com/sandre58/MyNetXaml/tree/main/src/MyNet.Xaml.Merger.MSBuild
-[version-shield]: https://img.shields.io/nuget/v/MyNet.Xaml.Merger.MSBuild
-[version-url]: https://www.nuget.org/packages/MyNet.Xaml.Merger.MSBuild
+[license-shield]: https://img.shields.io/github/license/sandre58/MyNet?style=for-the-badge
+[license-url]: https://github.com/sandre58/MyNet/blob/main/LICENSE
+[build-shield]: https://img.shields.io/github/actions/workflow/status/sandre58/MyNet/ci.yml?logo=github&label=CI
+[build-url]: https://github.com/sandre58/MyNet/actions

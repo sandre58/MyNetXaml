@@ -1,0 +1,39 @@
+<Project>
+    <!-- Reference: https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2017 -->
+
+    <!-- Informations -->
+    <PropertyGroup>
+        <Authors>Stéphane ANDRE</Authors>
+        <Owners>Stéphane ANDRE</Owners>
+        <Company>My .NET</Company>
+        <Copyright>Copyright © 2016-$([System.DateTime]::Now.ToString(yyyy)) - Stéphane ANDRE. All Rights Reserved.</Copyright>
+    </PropertyGroup>
+
+    <!-- Automatic project type detection -->
+    <PropertyGroup>
+        <IsTestProject>$(MSBuildProjectName.EndsWith('Tests'))</IsTestProject>
+        <IsDemoProject>$(MSBuildProjectName.Contains('.Demo'))</IsDemoProject>
+        <IsConsoleProject>$(MSBuildProjectName.Contains('.Console'))</IsConsoleProject>
+        <IsPackable Condition="'$(IsDemoProject)' == 'True' Or '$(IsTestProject)' == 'True' Or '$(IsConsoleProject)' == 'True'">false</IsPackable>
+        <IsPackable Condition="'$(IsDemoProject)' != 'True' And '$(IsTestProject)' != 'True' And '$(IsConsoleProject)' != 'True'">true</IsPackable>
+    </PropertyGroup>
+
+    <!-- Configuration -->
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+        <LangVersion>preview</LangVersion>
+        <NeutralLanguage>fr</NeutralLanguage>
+        <Nullable Condition="'$(Nullable)' == ''">enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+        <!-- Output builds -->
+        <AppendTargetFrameworkToOutputPath Condition="'$(IsDemoProject)' != 'True' And '$(IsConsoleProject)' != 'True'">true</AppendTargetFrameworkToOutputPath>
+        <AppendTargetFrameworkToOutputPath Condition="'$(IsDemoProject)' == 'True' Or '$(IsConsoleProject)' == 'True'">false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <!-- Imports -->
+    <Import Project="$(MSBuildThisFileDirectory)/build/code-analysis.props" Condition="Exists('$(MSBuildThisFileDirectory)/build/code-analysis.props')" />
+    <Import Project="$(MSBuildThisFileDirectory)/build/dependencies.props" Condition="Exists('$(MSBuildThisFileDirectory)/build/dependencies.props')" />
+    <Import Project="$(MSBuildThisFileDirectory)/build/package.props" Condition="Exists('$(MSBuildThisFileDirectory)/build/package.props') and '$(IsPackable)' == 'true'" />
+
+</Project>

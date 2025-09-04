@@ -1,5 +1,8 @@
-﻿// Copyright (c) Stéphane ANDRE. All Right Reserved.
-// See the LICENSE file in the project root for more information.
+﻿// -----------------------------------------------------------------------
+// <copyright file="ColorSchemeGenerator.cs" company="Stéphane ANDRE">
+// Copyright (c) Stéphane ANDRE. All rights reserved.
+// </copyright>
+// -----------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
@@ -8,50 +11,70 @@ using System.Linq;
 using System.Text;
 using MyNet.Xaml.Merger.Helpers;
 
-namespace MyNet.Xaml.Merger.XAMLColorSchemeGenerator
+namespace MyNet.Xaml.Merger.XAMLColorSchemeGenerator;
+
+public class ColorSchemeGenerator
 {
-    public class ColorSchemeGenerator
+    private const int BufferSize = 32768; // 32 Kilobytes
+
+    public ILogger? Logger { get; set; } = new TraceLogger();
+
+    public static ThemeGeneratorParameters GetParametersFromFile(string inputFile) => ThemeGenerator.Current.GetParametersFromString(FileHelper.ReadAllTextSharedWithRetry(inputFile));
+
+    public IEnumerable<string> GenerateColorSchemeFiles(string generatorParametersFile, string templateFile, string? outputPath = null)
     {
-        private const int BufferSize = 32768; // 32 Kilobytes
+        var parameters = GetParametersFromFile(generatorParametersFile);
 
-        public ILogger? Logger { get; set; } = new TraceLogger();
+        outputPath ??= Path.GetDirectoryName(Path.GetFullPath(templateFile));
 
-        public IEnumerable<string> GenerateColorSchemeFiles(string generatorParametersFile, string templateFile, string? outputPath = null)
+        if (string.IsNullOrEmpty(outputPath))
         {
-            var parameters = GetParametersFromFile(generatorParametersFile);
+            throw new InvalidOperationException("OutputPath could not be determined.");
+        }
 
-            outputPath ??= Path.GetDirectoryName(Path.GetFullPath(templateFile));
+        Directory.CreateDirectory(outputPath);
 
-            if (string.IsNullOrEmpty(outputPath))
+        var templateContent = File.ReadAllText(templateFile, Encoding.UTF8);
+
+        var colorSchemesWithoutVariantName = parameters.ColorSchemes
+            .Where(x => string.IsNullOrEmpty(x.ForColorSchemeVariant) || x.ForColorSchemeVariant == "None")
+            .ToList();
+        var colorSchemesWithVariantName = parameters.ColorSchemes
+            .Where(x => !string.IsNullOrEmpty(x.ForColorSchemeVariant) && x.ForColorSchemeVariant != "None")
+            .ToList();
+
+        foreach (var baseColorScheme in parameters.BaseColorSchemes)
+        {
+            if (colorSchemesWithoutVariantName.Count == 0
+                && colorSchemesWithVariantName.Count == 0)
             {
-                throw new InvalidOperationException("OutputPath could not be determined.");
+                var themeName = baseColorScheme.Name;
+                var colorSchemeName = string.Empty;
+                var alternativeColorSchemeName = string.Empty;
+                var themeDisplayName = baseColorScheme.Name;
+
+                yield return GenerateColorSchemeFile(outputPath, templateContent, themeName, themeDisplayName, baseColorScheme.Name, colorSchemeName, alternativeColorSchemeName, false, baseColorScheme.Values, parameters.DefaultValues);
             }
 
-            Directory.CreateDirectory(outputPath);
-
-            var templateContent = File.ReadAllText(templateFile, Encoding.UTF8);
-
-            var colorSchemesWithoutVariantName = parameters.ColorSchemes
-                .Where(x => string.IsNullOrEmpty(x.ForColorSchemeVariant) || x.ForColorSchemeVariant == "None")
-                .ToList();
-            var colorSchemesWithVariantName = parameters.ColorSchemes
-                .Where(x => !string.IsNullOrEmpty(x.ForColorSchemeVariant) && x.ForColorSchemeVariant != "None")
-                .ToList();
-
-            foreach (var baseColorScheme in parameters.BaseColorSchemes)
+            foreach (var colorScheme in colorSchemesWithoutVariantName)
             {
-                if (colorSchemesWithoutVariantName.Count == 0
-                    && colorSchemesWithVariantName.Count == 0)
+                if (!string.IsNullOrEmpty(colorScheme.ForBaseColor)
+                    && colorScheme.ForBaseColor != baseColorScheme.Name)
                 {
-                    var themeName = baseColorScheme.Name;
-                    var colorSchemeName = string.Empty;
-                    var alternativeColorSchemeName = string.Empty;
-                    var themeDisplayName = baseColorScheme.Name;
-
-                    yield return GenerateColorSchemeFile(outputPath, templateContent, themeName, themeDisplayName, baseColorScheme.Name, colorSchemeName, alternativeColorSchemeName, false, baseColorScheme.Values, parameters.DefaultValues);
+                    continue;
                 }
 
-                foreach (var colorScheme in colorSchemesWithoutVariantName)
+                var themeName = $"{baseColorScheme.Name}.{colorScheme.Name}";
+                var colorSchemeName = colorScheme.Name;
+                var alternativeColorSchemeName = colorScheme.Name;
+                var themeDisplayName = $"{colorSchemeName} ({baseColorScheme.Name})";
+
+                yield return GenerateColorSchemeFile(outputPath, templateContent, themeName, themeDisplayName, baseColorScheme.Name, colorSchemeName, alternativeColorSchemeName, colorScheme.IsHighContrast, colorScheme.Values, baseColorScheme.Values, parameters.DefaultValues);
+            }
+
+            foreach (var colorSchemeVariant in parameters.AdditionalColorSchemeVariants)
+            {
+                foreach (var colorScheme in parameters.ColorSchemes)
                 {
                     if (!string.IsNullOrEmpty(colorScheme.ForBaseColor)
                         && colorScheme.ForBaseColor != baseColorScheme.Name)
@@ -59,85 +82,63 @@ namespace MyNet.Xaml.Merger.XAMLColorSchemeGenerator
                         continue;
                     }
 
-                    var themeName = $"{baseColorScheme.Name}.{colorScheme.Name}";
-                    var colorSchemeName = colorScheme.Name;
+                    if (colorScheme.ForColorSchemeVariant == "None"
+                        || Array.Exists(parameters.ColorSchemes, x => x != colorScheme && colorScheme.Name == x.Name && colorScheme.IsHighContrast == x.IsHighContrast && x.ForColorSchemeVariant == colorSchemeVariant.Name))
+                    {
+                        continue;
+                    }
+
+                    var themeName = $"{baseColorScheme.Name}.{colorScheme.Name}.{colorSchemeVariant.Name}";
+                    var colorSchemeName = $"{colorScheme.Name}.{colorSchemeVariant.Name}";
                     var alternativeColorSchemeName = colorScheme.Name;
                     var themeDisplayName = $"{colorSchemeName} ({baseColorScheme.Name})";
 
-                    yield return GenerateColorSchemeFile(outputPath, templateContent, themeName, themeDisplayName, baseColorScheme.Name, colorSchemeName, alternativeColorSchemeName, colorScheme.IsHighContrast, colorScheme.Values, baseColorScheme.Values, parameters.DefaultValues);
-                }
-
-                foreach (var colorSchemeVariant in parameters.AdditionalColorSchemeVariants)
-                {
-                    foreach (var colorScheme in parameters.ColorSchemes)
-                    {
-                        if (!string.IsNullOrEmpty(colorScheme.ForBaseColor)
-                            && colorScheme.ForBaseColor != baseColorScheme.Name)
-                        {
-                            continue;
-                        }
-
-                        if (colorScheme.ForColorSchemeVariant == "None"
-                            // if there is a color scheme specific for the current variant skip the unspecific one
-                            || Array.Exists(parameters.ColorSchemes, x => x != colorScheme && colorScheme.Name == x.Name && colorScheme.IsHighContrast == x.IsHighContrast && x.ForColorSchemeVariant == colorSchemeVariant.Name))
-                        {
-                            continue;
-                        }
-
-                        var themeName = $"{baseColorScheme.Name}.{colorScheme.Name}.{colorSchemeVariant.Name}";
-                        var colorSchemeName = $"{colorScheme.Name}.{colorSchemeVariant.Name}";
-                        var alternativeColorSchemeName = colorScheme.Name;
-                        var themeDisplayName = $"{colorSchemeName} ({baseColorScheme.Name})";
-
-                        yield return GenerateColorSchemeFile(outputPath, templateContent, themeName, themeDisplayName, baseColorScheme.Name, colorSchemeName, alternativeColorSchemeName, colorScheme.IsHighContrast, colorScheme.Values, colorSchemeVariant.Values, baseColorScheme.Values, parameters.DefaultValues);
-                    }
+                    yield return GenerateColorSchemeFile(outputPath, templateContent, themeName, themeDisplayName, baseColorScheme.Name, colorSchemeName, alternativeColorSchemeName, colorScheme.IsHighContrast, colorScheme.Values, colorSchemeVariant.Values, baseColorScheme.Values, parameters.DefaultValues);
                 }
             }
         }
+    }
 
-        public static ThemeGenerator.ThemeGeneratorParameters GetParametersFromFile(string inputFile) => ThemeGenerator.Current.GetParametersFromString(FileHelper.ReadAllTextSharedWithRetry(inputFile));
-
-        public string GenerateColorSchemeFile(string outputPath, string templateContent, string themeName, string themeDisplayName, string baseColorScheme, string colorScheme, string alternativeColorScheme, bool isHighContrast, params Dictionary<string, string>[] valueSources)
+    public string GenerateColorSchemeFile(string outputPath, string templateContent, string themeName, string themeDisplayName, string baseColorScheme, string colorScheme, string alternativeColorScheme, bool isHighContrast, params Dictionary<string, string>[] valueSources)
+    {
+        if (isHighContrast)
         {
-            if (isHighContrast)
-            {
-                themeDisplayName += " HighContrast";
-            }
-
-            var themeTempFileContent = ThemeGenerator.Current.GenerateColorSchemeFileContent(templateContent, themeName, themeDisplayName, baseColorScheme, colorScheme, alternativeColorScheme, isHighContrast, valueSources);
-
-            var themeFilename = $"{themeName}";
-
-            if (isHighContrast)
-            {
-                themeFilename += ".HighContrast";
-            }
-
-            var themeFile = Path.Combine(outputPath, $"{themeFilename}.xaml");
-            themeFile = themeFile.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
-
-            var isNewFile = !File.Exists(themeFile);
-
-            Logger?.Info($"Checking \"{themeFile}\"...");
-
-            var fileHasToBeWritten = isNewFile
-                                     || FileHelper.ReadAllTextSharedWithRetry(themeFile) != themeTempFileContent;
-
-            if (fileHasToBeWritten)
-            {
-                using (var sw = new StreamWriter(themeFile, false, Encoding.UTF8, BufferSize))
-                {
-                    sw.Write(themeTempFileContent);
-                }
-
-                Logger?.Info($"Resource Dictionary saved to \"{themeFile}\".");
-            }
-            else
-            {
-                Logger?.Info("New Resource Dictionary did not differ from existing file. No new file written.");
-            }
-
-            return themeFile;
+            themeDisplayName += " HighContrast";
         }
+
+        var themeTempFileContent = ThemeGenerator.Current.GenerateColorSchemeFileContent(templateContent, themeName, themeDisplayName, baseColorScheme, colorScheme, alternativeColorScheme, isHighContrast, valueSources);
+
+        var themeFilename = $"{themeName}";
+
+        if (isHighContrast)
+        {
+            themeFilename += ".HighContrast";
+        }
+
+        var themeFile = Path.Combine(outputPath, $"{themeFilename}.xaml");
+        themeFile = themeFile.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
+
+        var isNewFile = !File.Exists(themeFile);
+
+        Logger?.Info($"Checking \"{themeFile}\"...");
+
+        var fileHasToBeWritten = isNewFile
+                                 || FileHelper.ReadAllTextSharedWithRetry(themeFile) != themeTempFileContent;
+
+        if (fileHasToBeWritten)
+        {
+            using (var sw = new StreamWriter(themeFile, false, Encoding.UTF8, BufferSize))
+            {
+                sw.Write(themeTempFileContent);
+            }
+
+            Logger?.Info($"Resource Dictionary saved to \"{themeFile}\".");
+        }
+        else
+        {
+            Logger?.Info("New Resource Dictionary did not differ from existing file. No new file written.");
+        }
+
+        return themeFile;
     }
 }

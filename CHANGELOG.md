@@ -1,4 +1,4 @@
-# Changelog
+﻿# Changelog
 
 ## [v2.0.1] - 2024-05-14
 ### :bug: Bug Fixes

@@ -1,0 +1,17 @@
+mode: ContinuousDeployment
+branches:
+  master:
+    regex: ^master$
+    tag: ''
+    increment: patch
+    is-release-branch: true
+
+  feature:
+    regex: ^features?[/-]
+    tag: beta
+    increment: minor
+    source-branches: [ master ]
+
+ignore:
+  sha: []
+commit-message-incrementing: Enabled
