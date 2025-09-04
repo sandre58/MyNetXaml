@@ -106,7 +106,7 @@ jobs:
       - name: Upload Console App
         uses: actions/upload-artifact@v4
         with:
-          name: XamlMerger
+          name: XamlMerger.zip
           path: "XamlMerger.zip"
 
   # Only on main branch : Deploy coverage report
@@ -149,8 +149,8 @@ jobs:
       - name: Download Console App
         uses: actions/download-artifact@v4
         with:
-          name: XamlMerger
-          path: "XamlMerger"
+          name: XamlMerger.zip
+          path: "."
 
       # Setup .NET SDK
       - name: Setup .NET
