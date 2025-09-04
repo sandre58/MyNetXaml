@@ -133,12 +133,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Download build artifacts
-      - name: Download build artifacts
+      # Download NuGets
+      - name: Download NuGets
         uses: actions/download-artifact@v4
         with:
-          name: build-artifacts
-          path: artifacts
+          name: NuGets
+          path: "nugets"
+
+      # Download Console App
+      - name: Download Console App
+        uses: actions/download-artifact@v4
+        with:
+          name: XamlMerger
+          path: "XamlMerger"
 
       # Setup .NET SDK
       - name: Setup .NET
