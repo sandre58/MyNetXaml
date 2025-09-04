@@ -1,5 +1,10 @@
 ﻿# Changelog
 
+## [v3.0.0] - 2025-09-04
+### :sparkles: New Features
+- [`69aeb96`](https://github.com/sandre58/MyNetXaml/commit/69aeb96e48be893ce349a11998b5d58b6c54556d) - Add .NET 10.0 *(PR [#10](https://github.com/sandre58/MyNetXaml/pull/10) by [@sandre58](https://github.com/sandre58))*
+
+
 ## [v2.0.1] - 2024-05-14
 ### :bug: Bug Fixes
 - [`545f458`](https://github.com/sandre58/MyNetXaml/commit/545f458dbdb9312a089c703653291eae0997e58f) - remove duplicates resources dictionaries *(commit by [@sandre58](https://github.com/sandre58))*
@@ -24,5 +29,6 @@
 
 [v2.0.0]: https://github.com/sandre58/MyNetXaml/compare/v1.0.0...v2.0.0
 [v2.0.1]: https://github.com/sandre58/MyNetXaml/compare/v2.0.0...v2.0.1
+[v3.0.0]: https://github.com/sandre58/MyNetXaml/compare/v2.0.1...v3.0.0
 [v3.0.0]: https://github.com/sandre58/MyNetXaml/compare/v2.0.1...v3.0.0
 [v3.0.0]: https://github.com/sandre58/MyNetXaml/compare/v2.0.1...v3.0.0
