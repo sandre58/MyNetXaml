@@ -14,8 +14,8 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryBranch>main</RepositoryBranch>
         <PackageOutputPath>$(MSBuildThisFileDirectory)..\nugets</PackageOutputPath>
-        <PackageProjectUrl>https://github.com/sandre58/MyNet</PackageProjectUrl>
-        <PackageReleaseNotes>https://github.com/sandre58/MyNet/releases</PackageReleaseNotes>
+        <PackageProjectUrl>https://github.com/sandre58/MyNetXaml</PackageProjectUrl>
+        <PackageReleaseNotes>https://github.com/sandre58/MyNetXaml/releases</PackageReleaseNotes>
         <PackageIconUrl>$(PackageIcon)</PackageIconUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
