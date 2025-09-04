@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace MyNet.Xaml.Merger.XAMLColorSchemeGenerator;
 
@@ -15,18 +16,18 @@ public class ThemeGenerator
 
     static ThemeGenerator() => Current = new ThemeGenerator();
 
-    public virtual ThemeGeneratorParameters GetParametersFromString(string input) => System.Text.Json.JsonSerializer.Deserialize<ThemeGeneratorParameters>(input) ?? new ThemeGeneratorParameters();
+    public virtual ThemeGeneratorParameters GetParametersFromString(string input) => JsonSerializer.Deserialize<ThemeGeneratorParameters>(input) ?? new ThemeGeneratorParameters();
 
     // The order of the passed valueSources is important.
     // More specialized/concrete values must be passed first and more generic ones must follow.
     public virtual string GenerateColorSchemeFileContent(string templateContent, string themeName, string themeDisplayName, string baseColorScheme, string colorScheme, string alternativeColorScheme, bool isHighContrast, params Dictionary<string, string>[] valueSources)
     {
-        templateContent = templateContent.Replace("{{ThemeName}}", themeName, System.StringComparison.OrdinalIgnoreCase)
-                                         .Replace("{{ThemeDisplayName}}", themeDisplayName, System.StringComparison.OrdinalIgnoreCase)
-                                         .Replace("{{BaseColorScheme}}", baseColorScheme, System.StringComparison.OrdinalIgnoreCase)
-                                         .Replace("{{ColorScheme}}", colorScheme, System.StringComparison.OrdinalIgnoreCase)
-                                         .Replace("{{AlternativeColorScheme}}", alternativeColorScheme, System.StringComparison.OrdinalIgnoreCase)
-                                         .Replace("{{IsHighContrast}}", isHighContrast.ToString(), System.StringComparison.OrdinalIgnoreCase);
+        templateContent = templateContent.Replace("{{ThemeName}}", themeName)
+                                         .Replace("{{ThemeDisplayName}}", themeDisplayName)
+                                         .Replace("{{BaseColorScheme}}", baseColorScheme)
+                                         .Replace("{{ColorScheme}}", colorScheme)
+                                         .Replace("{{AlternativeColorScheme}}", alternativeColorScheme)
+                                         .Replace("{{IsHighContrast}}", isHighContrast.ToString());
 
         bool contentChanged;
 
@@ -40,7 +41,7 @@ public class ThemeGenerator
                 foreach (var value in valueSource)
                 {
                     var finalValue = value.Value;
-                    var newTemplateContent = templateContent.Replace($"{{{{{value.Key}}}}}", finalValue, System.StringComparison.OrdinalIgnoreCase);
+                    var newTemplateContent = templateContent.Replace($"{{{{{value.Key}}}}}", finalValue);
 
                     if (templateContent != newTemplateContent)
                     {

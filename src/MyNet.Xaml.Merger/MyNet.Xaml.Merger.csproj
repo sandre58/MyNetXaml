@@ -1,8 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <Product>My .NET XAML Merger</Product>
         <PackageIcon>MyNetXaml.png</PackageIcon>
         <Description>Simplifies the management and organization of resources in XAML-based applications by merging multiple resource dictionary files into a single, consolidated file.</Description>
         <PackageTags>My;Xaml:MsBuild;Transform;Resource;Dictionary</PackageTags>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="System.Text.Json" Version="9.0.8" />
+    </ItemGroup>
 </Project>

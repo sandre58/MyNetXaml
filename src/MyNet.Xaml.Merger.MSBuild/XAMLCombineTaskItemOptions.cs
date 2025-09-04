@@ -49,10 +49,10 @@ public sealed class XAMLCombineTaskItemOptions : IXamlCombinerOptions, IEquatabl
     {
         unchecked
         {
-            var hashCode = TargetFile?.GetHashCode(StringComparison.InvariantCultureIgnoreCase) ?? 0;
+            var hashCode = TargetFile?.GetHashCode() ?? 0;
             hashCode = (hashCode * 397) ^ ImportMergedResourceDictionaryReferences.GetHashCode();
             hashCode = (hashCode * 397) ^ WriteFileHeader.GetHashCode();
-            hashCode = (hashCode * 397) ^ FileHeader.GetHashCode(StringComparison.InvariantCultureIgnoreCase);
+            hashCode = (hashCode * 397) ^ FileHeader.GetHashCode();
             hashCode = (hashCode * 397) ^ IncludeSourceFilesInFileHeader.GetHashCode();
             return hashCode;
         }

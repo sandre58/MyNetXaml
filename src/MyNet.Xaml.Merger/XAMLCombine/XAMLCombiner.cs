@@ -92,7 +92,7 @@ public class XAMLCombiner : IXamlCombinerOptions
         var themeDictionaries = new Dictionary<string, XElement>();
 
         // For each resource file
-        var orderedSourceFiles = sourceFiles.Order()
+        var orderedSourceFiles = sourceFiles.OrderBy(x => x)
                                             .ToArray();
 
         var seenNamespacesToFilesMapping = new Dictionary<XAttribute, string>();
@@ -101,7 +101,7 @@ public class XAMLCombiner : IXamlCombinerOptions
         {
             // ignore empty and lines that start with '#'
             if (string.IsNullOrEmpty(resourceFile)
-                || resourceFile.StartsWith('#'))
+                || resourceFile.StartsWith("#", StringComparison.InvariantCultureIgnoreCase))
             {
                 continue;
             }
@@ -194,7 +194,7 @@ public class XAMLCombiner : IXamlCombinerOptions
                                 }
 
                                 var sourceRelativeFilePath = sourceValue.Remove(0, componentMarkerIndex + componentMarker.Length);
-                                sourceRelativeFilePath = sourceRelativeFilePath.Replace("/", "\\", StringComparison.InvariantCultureIgnoreCase);
+                                sourceRelativeFilePath = sourceRelativeFilePath.Replace("/", "\\");
                                 if (orderedSourceFiles.Contains(sourceRelativeFilePath))
                                 {
                                     continue;
@@ -404,7 +404,7 @@ public class XAMLCombiner : IXamlCombinerOptions
 
             if (indexOfContractPresent >= 0)
             {
-                key = $"{importedElement.Name.Namespace.NamespaceName.AsSpan(indexOfContractPresent)}:{key}";
+                key = importedElement.Name.Namespace.NamespaceName.Substring(indexOfContractPresent) + ":" + key;
             }
         }
 
@@ -431,7 +431,7 @@ public class XAMLCombiner : IXamlCombinerOptions
                 continue;
             }
 
-            if (attr.Value.StartsWith('{')
+            if (attr.Value.StartsWith("{", StringComparison.InvariantCultureIgnoreCase)
                 && ResourceUsageRegex.Matches(attr.Value) is { Count: > 0 } matches)
             {
                 foreach (Match match in matches)
@@ -439,8 +439,8 @@ public class XAMLCombiner : IXamlCombinerOptions
                     var resourceKey = match.Groups["ResourceKey"].Value;
 
                     // compensate regex cutting of trailing "}" if key starts with "{".
-                    if (resourceKey.StartsWith('{')
-                        && !resourceKey.EndsWith('}'))
+                    if (resourceKey.StartsWith("{", StringComparison.InvariantCultureIgnoreCase)
+                        && !resourceKey.EndsWith("}", StringComparison.InvariantCultureIgnoreCase))
                     {
                         resourceKey += "}";
                     }
