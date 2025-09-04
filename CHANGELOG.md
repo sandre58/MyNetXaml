@@ -1,5 +1,16 @@
 ﻿# Changelog
 
+## [v4.0.0] - 2025-09-04
+### :boom: BREAKING CHANGES
+- due to [`7d1dd2a`](https://github.com/sandre58/MyNetXaml/commit/7d1dd2a4f1fd344e385dd5be0d6032d4d8a93bc5) - Target .NET Standard 2.0:
+
+  Target .NET Standard 2.0
+
+
+### :recycle: Refactors
+- [`7d1dd2a`](https://github.com/sandre58/MyNetXaml/commit/7d1dd2a4f1fd344e385dd5be0d6032d4d8a93bc5) - Target .NET Standard 2.0
+
+
 ## [v3.0.0] - 2025-09-04
 ### :sparkles: New Features
 - [`69aeb96`](https://github.com/sandre58/MyNetXaml/commit/69aeb96e48be893ce349a11998b5d58b6c54556d) - Add .NET 10.0 *(PR [#10](https://github.com/sandre58/MyNetXaml/pull/10) by [@sandre58](https://github.com/sandre58))*
@@ -32,3 +43,4 @@
 [v3.0.0]: https://github.com/sandre58/MyNetXaml/compare/v2.0.1...v3.0.0
 [v3.0.0]: https://github.com/sandre58/MyNetXaml/compare/v2.0.1...v3.0.0
 [v3.0.0]: https://github.com/sandre58/MyNetXaml/compare/v2.0.1...v3.0.0
+[v4.0.0]: https://github.com/sandre58/MyNetXaml/compare/v3.0.0...v4.0.0
