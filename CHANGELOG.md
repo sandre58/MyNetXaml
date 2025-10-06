@@ -1,5 +1,10 @@
 ﻿# Changelog
 
+## [v4.0.1] - 2025-09-04
+### :bug: Bug Fixes
+- [`f296331`](https://github.com/sandre58/MyNetXaml/commit/f2963311dfa310211740158e5a060754cdf4a7cf) - Enhance MSBuild packaging
+
+
 ## [v4.0.0] - 2025-09-04
 ### :boom: BREAKING CHANGES
 - due to [`7d1dd2a`](https://github.com/sandre58/MyNetXaml/commit/7d1dd2a4f1fd344e385dd5be0d6032d4d8a93bc5) - Target .NET Standard 2.0:
@@ -44,3 +49,4 @@
 [v3.0.0]: https://github.com/sandre58/MyNetXaml/compare/v2.0.1...v3.0.0
 [v3.0.0]: https://github.com/sandre58/MyNetXaml/compare/v2.0.1...v3.0.0
 [v4.0.0]: https://github.com/sandre58/MyNetXaml/compare/v3.0.0...v4.0.0
+[v4.0.1]: https://github.com/sandre58/MyNetXaml/compare/v4.0.0...v4.0.1
