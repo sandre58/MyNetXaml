@@ -36,7 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{892DFD87
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{FB9A9AA6-6119-43F3-9F1B-A4539F2DD1A3}"
 	ProjectSection(SolutionItems) = preProject
-		assets\MyNetXaml.png = assets\MyNetXaml.png
+		assets\MyXaml.png = assets\MyXaml.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code analysis", "Code analysis", "{015D541F-7A6E-4FF7-A267-7FA869C00DE0}"

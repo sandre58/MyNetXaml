@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <Product>My .NET XAML Merger - MSBuild</Product>
-        <PackageIcon>MyNetXaml.png</PackageIcon>
+        <PackageIcon>MyXaml.png</PackageIcon>
         <Description>Empowers developers to streamline the integration of resource dictionaries in XAML-based applications by consolidating multiple resource dictionary files into a single, cohesive file during the build process using MSBuild.</Description>
         <PackageTags>My;Xaml;MsBuild;Transform;Resource;Dictionary</PackageTags>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

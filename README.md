@@ -3,18 +3,18 @@
 <!-- PROJECT INFO -->
 <br />
 <div align="center">
-  <img src="assets/MyNetXaml.png" width="256" height="256" alt="MyNetXaml">
+  <img src="assets/MyXaml.png" width="256" height="256" alt="MyXaml">
 </div>
 
 <h1 align="center">My .NET</h1>
 
 [![MIT License][license-shield]][license-url]
-[![GitHub Stars](https://img.shields.io/github/stars/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/network/members)
-[![GitHub Issues](https://img.shields.io/github/issues/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/commits/main)
-[![Contributors](https://img.shields.io/github/contributors/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml/graphs/contributors)
-[![Repo Size](https://img.shields.io/github/repo-size/sandre58/mynetxaml?style=for-the-badge)](https://github.com/sandre58/mynetxaml)
+[![GitHub Stars](https://img.shields.io/github/stars/sandre58/myxaml?style=for-the-badge)](https://github.com/sandre58/myxaml/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/sandre58/myxaml?style=for-the-badge)](https://github.com/sandre58/myxaml/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/sandre58/myxaml?style=for-the-badge)](https://github.com/sandre58/myxaml/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/sandre58/myxaml?style=for-the-badge)](https://github.com/sandre58/myxaml/commits/main)
+[![Contributors](https://img.shields.io/github/contributors/sandre58/myxaml?style=for-the-badge)](https://github.com/sandre58/myxaml/graphs/contributors)
+[![Repo Size](https://img.shields.io/github/repo-size/sandre58/myxaml?style=for-the-badge)](https://github.com/sandre58/myxaml)
 
 Various tools for easing the development of XAML related applications.
 
@@ -23,7 +23,7 @@ As i only use WPF myself everything is focused on WPF, but things should work fo
 You can either use the commandline tool `MyNet.Xaml.Merger` or the MSBuild version `MyNet.Xaml.Merger.MSBuild` to make use of the provided functionalities.
 
 [![Build][build-shield]][build-url]
-[![Coverage](https://codecov.io/gh/sandre58/mynetxaml/branch/main/graph/badge.svg)](https://codecov.io/gh/sandre58/mynetxaml)
+[![Coverage](https://codecov.io/gh/sandre58/myxaml/branch/main/graph/badge.svg)](https://codecov.io/gh/sandre58/myxaml)
 [![C#](https://img.shields.io/badge/language-C%23-blue)](#)
 [![.NET 8.0](https://img.shields.io/badge/.NET-8.0-purple)](#)
 [![.NET 9.0](https://img.shields.io/badge/.NET-9.0-purple)](#)
