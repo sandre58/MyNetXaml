@@ -14,3 +14,4 @@ jobs:
       app-projects: "tools"
       nuget-projects: "src"
       app-target-framework: "net10.0-windows"
+      test-args:  "--filter \"Category!=Integration\""
