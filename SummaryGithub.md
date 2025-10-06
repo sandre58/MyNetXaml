@@ -3,7 +3,7 @@
 
 |||
 |:---|:---|
-| Generated on: | 10/06/2025 - 19:34:52 |
+| Generated on: | 10/06/2025 - 19:42:57 |
 | Parser: | MultiReport (2x Cobertura) |
 | Assemblies: | 5 |
 | Classes: | 192 |
@@ -17,7 +17,7 @@
 | Covered branches: | 143 |
 | Total branches: | 7251 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
-| Tag: | 69_18292238339 |
+| Tag: | 70_18292420974 |
 
 </details>
 
