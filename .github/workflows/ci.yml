@@ -16,3 +16,5 @@ jobs:
       nuget-projects: "src"
       app-target-framework: "net10.0"
       test-args:  "--filter \"Category!=Integration\""
+    secrets:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
