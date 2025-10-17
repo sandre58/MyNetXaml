@@ -1,52 +1,37 @@
-﻿# Changelog
+# Changelog for v4.0.2
 
-## [v4.0.1] - 2025-09-04
-### :bug: Bug Fixes
-- [`f296331`](https://github.com/sandre58/MyXaml/commit/f2963311dfa310211740158e5a060754cdf4a7cf) - Enhance MSBuild packaging
-
-
-## [v4.0.0] - 2025-09-04
-### :boom: BREAKING CHANGES
-- due to [`7d1dd2a`](https://github.com/sandre58/MyXaml/commit/7d1dd2a4f1fd344e385dd5be0d6032d4d8a93bc5) - Target .NET Standard 2.0:
-
-  Target .NET Standard 2.0
+All notable changes to this project will be documented in this file.  
+This file is generated automatically based on commit history and tags.
 
 
-### :recycle: Refactors
-- [`7d1dd2a`](https://github.com/sandre58/MyXaml/commit/7d1dd2a4f1fd344e385dd5be0d6032d4d8a93bc5) - Target .NET Standard 2.0
 
 
-## [v3.0.0] - 2025-09-04
-### :sparkles: New Features
-- [`69aeb96`](https://github.com/sandre58/MyXaml/commit/69aeb96e48be893ce349a11998b5d58b6c54556d) - Add .NET 10.0 *(PR [#10](https://github.com/sandre58/MyXaml/pull/10) by [@sandre58](https://github.com/sandre58))*
+## [v4.0.2] - 2025-10-17
 
 
-## [v2.0.1] - 2024-05-14
-### :bug: Bug Fixes
-- [`545f458`](https://github.com/sandre58/MyXaml/commit/545f458dbdb9312a089c703653291eae0997e58f) - remove duplicates resources dictionaries *(commit by [@sandre58](https://github.com/sandre58))*
+### 👷 CI/CD
+
+- add test arguments to CI workflow for filtering integration tests *(commit by **Stéphane ANDRE (E104915)** in [682beac](https://github.com/sandre58/MyXaml/commit/682beac1ecb61897b41eef6ce8e5b9b4e9d02d9d))*
 
 
-## [v2.0.0] - 2024-05-05
-### :bug: Bug Fixes
-- [`555eda5`](https://github.com/sandre58/MyXaml/commit/555eda590cee327e25d60238e60e60eb7d61e87b) - generate good nuget package *(commit by [@sandre58](https://github.com/sandre58))*
-- [`fa00e2e`](https://github.com/sandre58/MyXaml/commit/fa00e2e61cf68609ecf6c5e30dfd9793d3106bea) - fix path of dlls *(commit by [@sandre58](https://github.com/sandre58))*
+### 🔧 Chores
 
-### :white_check_mark: Tests
-- [`b23bef1`](https://github.com/sandre58/MyXaml/commit/b23bef1c6d0d6d945e83079ed86f0ec1f69fe742) - test bin path *(commit by [@sandre58](https://github.com/sandre58))*
-- [`6399cd0`](https://github.com/sandre58/MyXaml/commit/6399cd055c1afe271567ad954c2d431d1c3734e3) - test build *(commit by [@sandre58](https://github.com/sandre58))*
+- update project references and fix image paths in README and package files *(commit by **Stéphane ANDRE (E104915)** in [af14e4d](https://github.com/sandre58/MyXaml/commit/af14e4d2b725442f5db8c9fe7b7ddc1317a11df8))*
+
+- update app target framework to net10.0 in CI workflow *(commit by **Stéphane ANDRE (E104915)** in [32db8fa](https://github.com/sandre58/MyXaml/commit/32db8fabd219da8102215da0d4c9ae913740a7a0))*
+
+- Update CI and release workflows; add test project configuration *(commit by **Stéphane ANDRE (E104915)** in [1cc32d7](https://github.com/sandre58/MyXaml/commit/1cc32d76c2f1ac9d420cc25fae6af0e3e927c44a))*
 
 
-## [v1.0.1] - 2024-04-27
-- Add extensions
-- Update CI
 
-## [v1.0.0] - 2024-04-24
-- Initialize repository
 
-[v2.0.0]: https://github.com/sandre58/MyXaml/compare/v1.0.0...v2.0.0
-[v2.0.1]: https://github.com/sandre58/MyXaml/compare/v2.0.0...v2.0.1
-[v3.0.0]: https://github.com/sandre58/MyXaml/compare/v2.0.1...v3.0.0
-[v3.0.0]: https://github.com/sandre58/MyXaml/compare/v2.0.1...v3.0.0
-[v3.0.0]: https://github.com/sandre58/MyXaml/compare/v2.0.1...v3.0.0
-[v4.0.0]: https://github.com/sandre58/MyXaml/compare/v3.0.0...v4.0.0
-[v4.0.1]: https://github.com/sandre58/MyXaml/compare/v4.0.0...v4.0.1
+
+
+
+
+
+
+**Full Changelog:** [compare v4.0.1...v4.0.2](https://github.com/sandre58/MyXaml/compare/v4.0.1...v4.0.2)
+
+
+---
