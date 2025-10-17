@@ -7,6 +7,6 @@
         <PackageTags>My;Xaml:MsBuild;Transform;Resource;Dictionary</PackageTags>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="System.Text.Json" Version="9.0.8" />
+      <PackageReference Include="System.Text.Json" />
     </ItemGroup>
 </Project>
