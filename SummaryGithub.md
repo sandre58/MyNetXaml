@@ -3,21 +3,21 @@
 
 |||
 |:---|:---|
-| Generated on: | 10/06/2025 - 19:42:57 |
+| Generated on: | 10/17/2025 - 11:18:24 |
 | Parser: | MultiReport (2x Cobertura) |
 | Assemblies: | 5 |
-| Classes: | 192 |
+| Classes: | 195 |
 | Files: | 162 |
-| **Line coverage:** | 2.7% (332 of 11893) |
+| **Line coverage:** | 2.7% (332 of 11926) |
 | Covered lines: | 332 |
-| Uncovered lines: | 11561 |
-| Coverable lines: | 11893 |
-| Total lines: | 32706 |
-| **Branch coverage:** | 1.9% (143 of 7251) |
+| Uncovered lines: | 11594 |
+| Coverable lines: | 11926 |
+| Total lines: | 33160 |
+| **Branch coverage:** | 1.9% (143 of 7267) |
 | Covered branches: | 143 |
-| Total branches: | 7251 |
+| Total branches: | 7267 |
 | **Method coverage:** | [Feature is only available for sponsors](https://reportgenerator.io/pro) |
-| Tag: | 70_18292420974 |
+| Tag: | 84_18591010089 |
 
 </details>
 
@@ -105,8 +105,10 @@
 |BoxedPrimitives|0%|0%|
 |BufferUtils|0%|0%|
 |CollectionUtils|0%|0%|
+|CollectionUtils.EmptyArrayContainer<T>|0%||
 |CollectionWrapper<T>|0%|0%|
 |ConvertUtils|0%|0%|
+|ConvertUtils.CastConverters|0%||
 |DateTimeParser|0%|0%|
 |DateTimeUtils|0%|0%|
 |DefaultReferenceResolver|0%|0%|
@@ -138,6 +140,7 @@
 |JsonSerializerProxy|0%|0%|
 |JsonTokenUtils|0%|0%|
 |JsonTypeReflector|0%|0%|
+|JsonTypeReflector.CreatorCache|0%||
 |MathUtils|0%|0%|
 |MiscellaneousUtils|0%|0%|
 |NoThrowExpressionVisitor|0%|0%|
